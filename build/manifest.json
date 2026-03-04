@@ -1,0 +1,28 @@
+{
+  "name": "HerSafe - Comunidad de Mujeres",
+  "short_name": "HerSafe",
+  "description": "La primera plataforma digital dirigida a mujeres que combina seguridad, salud y bienestar",
+  "start_url": "https://app.wearehersafe.com/auth",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#0365ff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "https://i.imgur.com/8FjoGdH.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://i.imgur.com/LOPjDcG.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "lifestyle", "social"],
+  "lang": "es",
+  "dir": "ltr"
+}
