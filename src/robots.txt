@@ -1,0 +1,20 @@
+# robots.txt for HerSafe
+# Permitir que todos los motores de búsqueda indexen el sitio
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://wearehersafe.com/sitemap.xml
+
+# Crawl-delay para bots específicos (opcional)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

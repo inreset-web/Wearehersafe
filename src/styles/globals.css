@@ -1,0 +1,4621 @@
+/* CONFIGURACIÓN CRÍTICA INMEDIATA: Videos sin controles ANTES DE TODO */
+video { 
+  -webkit-media-controls: none !important; 
+  -moz-media-controls: none !important; 
+  pointer-events: none !important; 
+  -webkit-appearance: none !important; 
+  appearance: none !important;
+  -webkit-touch-action: none !important;
+  touch-action: none !important;
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-timeline,
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-time-remaining-display,
+video::-webkit-media-controls-timeline-container,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-fullscreen-button,
+video::-webkit-media-controls-container,
+video::-webkit-media-controls-panel-container { 
+  display: none !important; 
+  visibility: hidden !important; 
+  opacity: 0 !important; 
+  width: 0 !important; 
+  height: 0 !important; 
+  position: absolute !important;
+  left: -9999px !important;
+  z-index: -9999 !important;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+video::-webkit-media-controls-play-button {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* PREVENCIÓN DE PARPADEO: Cargar fuentes con font-display: optional para evitar FOUT */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&display=optional');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;600&display=optional');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=optional');
+
+/* FUENTE BALHATTAN ORIGINAL DESDE GITHUB RAW - Con font-display optional */
+@font-face {
+  font-family: 'Balhattan';
+  src: url('https://raw.githubusercontent.com/NawalBouananiAkachar/RecursosINRESET/main/Balhattan-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Optimizaciones móviles críticas */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* PREVENIR PARPADEO DE TEXTOS (FOUT) - Aplicar a elementos de texto */
+  html {
+    /* Prevenir cambios de layout durante carga de fuentes */
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    /* Prevenir reflow visible durante la carga de fuentes */
+    opacity: 1 !important;
+    visibility: visible !important;
+    /* Asegurar fuentes visibles desde el inicio */
+    font-display: optional;
+  }
+
+  /* Prevenir parpadeo en elementos con fuentes personalizadas */
+  .subtitle-font,
+  .text-font,
+  .balhattan-font,
+  h1, h2, h3, h4, h5, h6, p, span, div, button, a {
+    /* Transición suave en lugar de parpadeo */
+    transition: none !important;
+    /* Prevenir invisible text durante carga */
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* CONFIGURACIÓN CRÍTICA: Videos sin controles desde el PRIMER MOMENTO */
+  video[autoplay] {
+    -webkit-media-controls: none !important;
+    -moz-media-controls: none !important;
+    -webkit-media-controls-panel: none !important;
+    -webkit-media-controls-enclosure: none !important;
+    -webkit-media-controls-overlay-enclosure: none !important;
+    -webkit-media-controls-start-playback-button: none !important;
+    pointer-events: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+  }
+
+  /* CONFIGURACIÓN CRÍTICA: Todos los videos son no interactivos por defecto */
+  video {
+    -webkit-media-controls: none !important;
+    -moz-media-controls: none !important;
+    pointer-events: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* CONFIGURACIÓN ULTRA CRÍTICA: Bloquear controles desde el HTML */
+  video[data-no-controls="true"],
+  video.hero-centered-video {
+    -webkit-media-controls: none !important;
+    -moz-media-controls: none !important;
+    -webkit-media-controls-panel: none !important;
+    -webkit-media-controls-enclosure: none !important;
+    -webkit-media-controls-overlay-enclosure: none !important;
+    -webkit-media-controls-start-playback-button: none !important;
+    -webkit-media-controls-play-button: none !important;
+    -webkit-media-controls-fullscreen-button: none !important;
+    -webkit-media-controls-timeline: none !important;
+    -webkit-media-controls-current-time-display: none !important;
+    -webkit-media-controls-time-remaining-display: none !important;
+    -webkit-media-controls-mute-button: none !important;
+    -webkit-media-controls-volume-slider: none !important;
+    pointer-events: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    -webkit-touch-action: none !important;
+    touch-action: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Optimizaciones específicas para móvil */
+  .mobile-optimized {
+    /* Mejorar rendimiento en móvil */
+    contain: layout style paint;
+    will-change: auto;
+  }
+
+  .mobile-main {
+    /* Optimizar scrolling en móvil */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .page-content {
+    /* Evitar layout shifts */
+    min-height: 50vh;
+    contain: layout;
+  }
+
+  /* Eliminar TODOS los espacios finales de la página */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative !important;
+  }
+
+  /* Contenedor principal sin espacios finales */
+  body > div:not(#modal-root) {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+  }
+
+  /* Modal root debe mantenerse fixed siempre */
+  #modal-root {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    pointer-events: none !important;
+    z-index: 999999999 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+    max-width: none !important;
+  }
+  
+  /* Prevenir desplazamiento horizontal en TODOS los contenedores */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Fix específico para iOS Safari viewport */
+  @supports (-webkit-touch-callout: none) {
+    /* Estilos específicos para iOS */
+    html, body {
+      width: 100vw !important;
+      overflow-x: hidden !important;
+      position: relative !important;
+    }
+    
+    body > div,
+    #root,
+    main,
+    section,
+    .instructors-landing {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+    }
+    
+    /* Imágenes de ancho completo en iOS */
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+      display: block !important;
+    }
+    
+    /* EXCEPCIÓN: Logo del header debe mantener su altura fija en iOS */
+    header img.header-logo {
+      height: 28px !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+    
+    @media (min-width: 1024px) {
+      header img.header-logo {
+        height: 32px !important;
+      }
+    }
+  }
+
+  /* Footer pegado al final sin espacios */
+  footer, 
+  .footer-section {
+    background-color: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: auto !important;
+  }
+
+  /* Eliminar cualquier espacio después del footer */
+  footer:last-child,
+  .footer-section:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Garantizar que no haya espacios después del último elemento */
+  body > div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+  }
+
+  /* Main content debe permitir que footer se pegue al final */
+  main {
+    flex: 1;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Asegurar que el root de React no tenga altura extra */
+  #root {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+
+
+
+
+  html {
+    scroll-behavior: smooth;
+    background: #000000;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(3, 101, 255, 0.50) 0%, rgba(3, 101, 255, 0.22) 15%, rgba(3, 101, 255, 0.12) 30%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(3, 101, 255, 0.48) 0%, rgba(3, 101, 255, 0.20) 12%, rgba(3, 101, 255, 0.08) 25%, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(3, 101, 255, 0.42) 0%, rgba(3, 101, 255, 0.18) 20%, rgba(3, 101, 255, 0.10) 35%, transparent 55%),
+      radial-gradient(circle at 40% 80%, rgba(3, 101, 255, 0.38) 0%, rgba(3, 101, 255, 0.15) 10%, transparent 40%),
+      radial-gradient(circle at 90% 20%, rgba(3, 101, 255, 0.35) 0%, rgba(3, 101, 255, 0.12) 18%, transparent 35%),
+      radial-gradient(circle at 10% 90%, rgba(3, 101, 255, 0.32) 0%, rgba(3, 101, 255, 0.10) 15%, transparent 32%),
+      radial-gradient(circle at 60% 15%, rgba(3, 101, 255, 0.30) 0%, transparent 28%),
+      radial-gradient(circle at 25% 60%, rgba(3, 101, 255, 0.28) 0%, transparent 25%),
+      radial-gradient(circle at 85% 85%, rgba(3, 101, 255, 0.26) 0%, transparent 22%);
+    background-attachment: fixed;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    /* Optimizaciones anti-parpadeo */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+
+  body {
+    @apply text-foreground;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "slnt" 0;
+    font-weight: 400;
+    overflow-x: hidden;
+    background: transparent; /* Dejar que el html maneje el fondo */
+    color: #ffffff !important; /* Texto blanco por defecto */
+    margin: 0 !important;
+    padding: 0 !important;
+    /* SIN PADDING-TOP - el navbar estará sobrepuesto */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: auto !important;
+    /* Optimizaciones críticas para móvil */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Prevenir zoom en iOS */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Ocultar scrollbar visual solo en móvil (no afecta funcionalidad de scroll) */
+  @media (max-width: 1023px) {
+    body {
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+    
+    body::-webkit-scrollbar {
+      display: none; /* WebKit browsers */
+    }
+  }
+
+  /* Scrollbar personalizado visible y claro solo en desktop */
+  @media (min-width: 1024px) {
+    /* Scrollbar personalizado en HTML (no en body) */
+    html {
+      scrollbar-width: auto;
+      scrollbar-color: #0365ff rgba(0, 0, 0, 0.2);
+    }
+
+    html::-webkit-scrollbar {
+      width: 18px;
+      display: block;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    html::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      margin: 6px 0;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    html::-webkit-scrollbar-thumb {
+      background: #0365ff;
+      border-radius: 12px;
+      border: 4px solid rgba(0, 0, 0, 0.2);
+      background-clip: padding-box;
+      box-shadow: 
+        0 0 16px rgba(3, 101, 255, 0.8),
+        0 0 32px rgba(3, 101, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      min-height: 80px;
+    }
+
+    html::-webkit-scrollbar-thumb:hover {
+      background: #0052cc;
+      box-shadow: 
+        0 0 20px rgba(3, 101, 255, 0.9),
+        0 0 40px rgba(3, 101, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+      cursor: grab;
+      border: 4px solid rgba(0, 0, 0, 0.3);
+    }
+
+    html::-webkit-scrollbar-thumb:active {
+      background: #003d99;
+      box-shadow: 
+        0 0 24px rgba(3, 101, 255, 1),
+        0 0 48px rgba(3, 101, 255, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      cursor: grabbing;
+      border: 4px solid rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  /* FUENTE BALHATTAN ORIGINAL PARA HERSAFE */
+  .balhattan-font {
+    font-family: 'Balhattan', sans-serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  /* Clase específica para el título principal HerSafe */
+  .hero-title {
+    min-width: 0;
+    width: fit-content;
+    max-width: none;
+    overflow: visible;
+    white-space: nowrap;
+    word-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+    display: inline-block;
+    line-height: 0.85;
+  }
+
+  /* Título horizontal - SIEMPRE en una línea con espaciado matemáticamente uniforme */
+  .hero-title-horizontal {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.6rem, 1.6vw, 1.2rem);
+    text-align: center;
+    word-break: keep-all;
+    white-space: nowrap !important;
+    overflow: visible;
+    width: 100%;
+    min-width: 0;
+    /* Distribución exacta del espacio */
+    align-items: baseline;
+    font-feature-settings: 'kern' 0, 'liga' 0;
+  }
+
+  /* Alineación del título principal para que coincida con el texto descriptivo */
+  .hero-title-aligned {
+    /* En móvil centrado */
+    justify-content: center;
+    text-align: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-title-aligned {
+      /* En desktop alineado a la izquierda como el texto descriptivo */
+      justify-content: flex-start;
+      text-align: left;
+    }
+  }
+
+  /* Espaciado MATEMÁTICAMENTE IDÉNTICO en todas las resoluciones */
+  @media (max-width: 1023px) {
+    .hero-title-horizontal {
+      gap: clamp(0.6rem, 1.6vw, 1.2rem) !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title-horizontal {
+      gap: clamp(0.6rem, 1.6vw, 1.2rem) !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-title-horizontal {
+      gap: clamp(0.6rem, 1.6vw, 1.2rem) !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title-horizontal {
+      gap: clamp(0.6rem, 1.6vw, 1.2rem) !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .hero-title-horizontal {
+      gap: clamp(0.6rem, 1.6vw, 1.2rem) !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+    }
+  }
+
+  /* Todos los spans con propiedades idénticas para espaciado uniforme */
+  .hero-title-horizontal span {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    letter-spacing: inherit !important;
+    word-spacing: 0 !important;
+    text-indent: 0 !important;
+    box-sizing: content-box !important;
+    /* Eliminar cualquier factor que pueda afectar el espaciado */
+    font-feature-settings: 'kern' 0, 'liga' 0 !important;
+    text-rendering: optimizeSpeed !important;
+    vertical-align: baseline !important;
+  }
+
+  /* REGLA GLOBAL: NUNCA CORTAR TEXTO EN TODA LA APLICACIÓN */
+  h1, h2, h3, h4, h5, h6, p, span, div, button, a, label,
+  .hero-description, .hero-description-large,
+  .text-font, .subtitle-font, .balhattan-font {
+    /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+    word-wrap: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    /* NUNCA usar guiones para separar palabras */
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    /* Asegurar texto visible */
+    text-overflow: clip !important;
+    overflow: visible !important;
+  }
+
+  /* ESPECÍFICO PARA BOTONES - nunca cortar texto de CTAs */
+  button, 
+  .btn, 
+  [role="button"],
+  a[class*="button"] {
+    /* TEXTO COMPLETO EN BOTONES SIEMPRE */
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    word-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+  }
+
+  /* Mejoras responsive para BenefitsSection */
+  .benefits-section {
+    scroll-margin-top: 2rem;
+  }
+
+  @media (max-width: 1023px) {
+    .benefits-section {
+      scroll-margin-top: 1rem;
+    }
+    
+    /* Mejorar legibilidad en móvil */
+    .benefits-section .subtitle-font {
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+    
+    .benefits-section .text-font {
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .benefits-section .subtitle-font {
+      line-height: 1.2;
+      letter-spacing: 0.005em;
+    }
+  }
+
+  /* Hero Section - Clean design with black background and video support */
+  .hero-section {
+    background-color: transparent !important;
+    isolation: isolate;
+  }
+  
+  .hero-section .subtitle-font,
+  .hero-section .text-font,
+  .hero-section h1,
+  .hero-section h2,
+  .hero-section h3,
+  .hero-section p,
+  .hero-section span {
+    filter: none !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Asegurar colores correctos sobre video/fondo negro */
+  .hero-section h1 {
+    color: white !important;
+  }
+  
+  .hero-section h1 span {
+    color: white !important;
+  }
+
+  /* Separadores naranjas limpios sin efectos */
+  .hero-section h1 span.text-\[#ff9e03\],
+  .hero-section .hero-title-separator {
+    color: #ff9e03 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Palabras del título específicas del hero - IDÉNTICO comportamiento */
+  .hero-section .hero-title-word {
+    color: white !important;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    letter-spacing: inherit !important;
+    word-spacing: 0 !important;
+    text-indent: 0 !important;
+    box-sizing: content-box !important;
+    font-feature-settings: 'kern' 0, 'liga' 0 !important;
+    text-rendering: optimizeSpeed !important;
+    vertical-align: baseline !important;
+    font-variant-numeric: normal !important;
+    font-variant-ligatures: none !important;
+  }
+
+  .hero-section .hero-title-word:hover {
+    color: #0365ff !important;
+  }
+
+  /* Descripción legible sobre video/fondo negro */
+  .hero-section p {
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  /* Video styling limpio - sin overlays complejos */
+  .hero-video-container {
+    position: relative;
+  }
+
+  /* Hero Video - Separado completamente en desktop/tablet */
+  .hero-video-container,
+  .hero-image-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    overflow: hidden;
+    contain: layout style;
+  }
+
+  /* TABLET: Video container centrado y ajustado */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .hero-video-container {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      position: relative !important;
+      border-radius: 20px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+      align-self: center !important;
+    }
+  }
+
+  /* DESKTOP: Video container centrado y ajustado */
+  @media (min-width: 1024px) and (max-width: 1399px) {
+    .hero-video-container {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      position: relative !important;
+      border-radius: 24px !important;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4) !important;
+      align-self: center !important;
+    }
+  }
+
+  /* DESKTOP GRANDE: Video container optimizado */
+  @media (min-width: 1400px) and (max-width: 1799px) {
+    .hero-video-container {
+      width: 110% !important;
+      max-width: none !important;
+      margin-left: -5% !important;
+      margin-right: -5% !important;
+      position: relative !important;
+      border-radius: 24px !important;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4) !important;
+      align-self: center !important;
+    }
+  }
+
+  /* PANTALLAS ULTRA GRANDES: Video más ancho */
+  @media (min-width: 1800px) {
+    .hero-video-container {
+      width: 120% !important;
+      max-width: none !important;
+      margin-left: -10% !important;
+      margin-right: -10% !important;
+      position: relative !important;
+      border-radius: 24px !important;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4) !important;
+      align-self: center !important;
+    }
+  }
+
+  /* Contenedor principal del hero - Control estricto de dimensiones */
+  .hero-section .flex.flex-col {
+    min-height: 0;
+    max-height: 100%;
+    contain: layout;
+  }
+
+  /* TABLET Y DESKTOP: Contenedor principal ajustado a 100vh */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .hero-section > div {
+      height: 100vh !important;
+      max-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 1rem !important;
+      padding: 1rem 1.5rem !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section > div {
+      height: 100vh !important;
+      max-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 1.5rem !important;
+      padding: 1.5rem 2rem !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  .hero-centered-video,
+  .hero-centered-image {
+    object-fit: cover !important;
+    object-position: center center !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    border-radius: inherit;
+  }
+
+  /* MOBILE: Asegurar que el video llene completamente el contenedor vertical */
+  @media (max-width: 768px) {
+    .hero-centered-video,
+    .hero-centered-image {
+      object-fit: cover !important;
+      object-position: center 40% !important;
+      min-height: 100% !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-centered-video,
+    .hero-centered-image {
+      object-position: center 35% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-centered-video,
+    .hero-centered-image {
+      object-position: center 30% !important;
+    }
+  }
+
+  /* Optimizaciones específicas para video - MÁXIMA COMPATIBILIDAD MÓVIL */
+  .hero-centered-video {
+    background-color: #000000;
+    transform: translateZ(0);
+    will-change: auto;
+    backface-visibility: hidden;
+    overflow: hidden;
+    contain: layout style;
+    /* Propiedades esenciales para reproducción móvil */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Configuración específica para iOS Safari */
+    -webkit-playsinline: true;
+    -moz-playsinline: true;
+    /* Configuración para navegadores móviles */
+    x5-playsinline: true;
+    x5-video-player-type: h5;
+    x5-video-player-fullscreen: false;
+    /* Optimizaciones adicionales para Safari iOS */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    /* Prevenir zoom en iOS */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    /* Mejorar rendimiento en dispositivos de baja potencia */
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  /* ELIMINAR COMPLETAMENTE TODOS LOS CONTROLES DE VIDEO */
+  .hero-centered-video::-webkit-media-controls {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-enclosure {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-panel {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-play-button {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-timeline {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-current-time-display {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-time-remaining-display {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-mute-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-volume-slider {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-seek-back-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-seek-forward-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-rewind-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-return-to-realtime-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .hero-centered-video::-webkit-media-controls-toggle-closed-captions-button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* VIDEO COMPLETAMENTE NO INTERACTIVO */
+  .hero-centered-video {
+    pointer-events: none !important; /* Evitar CUALQUIER interacción del usuario */
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    
+    /* Garantizar autoplay en móvil */
+    -webkit-playsinline: true;
+    -moz-playsinline: true;
+    playsinline: true;
+    
+    /* Evitar que aparezcan controles al tocar */
+    -webkit-media-controls: none !important;
+    -moz-media-controls: none !important;
+    
+    /* Bloquear contexto menu */
+    -webkit-context-menu: none !important;
+    context-menu: none !important;
+  }
+
+  /* Bloquear menú contextual en el video */
+  .hero-centered-video::-webkit-context-menu {
+    display: none !important;
+  }
+
+  /* Para Firefox */
+  .hero-centered-video::-moz-media-controls {
+    display: none !important;
+  }
+
+  /* OPTIMIZACIONES ESPECÍFICAS PARA MÓVIL - VIDEO SIN CONTROLES */
+  @media (max-width: 768px) {
+    .hero-centered-video {
+      /* Forzar video sin controles en móvil */
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      
+      /* Bloquear completamente interacciones táctiles */
+      touch-action: none !important;
+      -ms-touch-action: none !important;
+      -webkit-touch-action: none !important;
+      
+      /* Prevenir zoom y scroll en el video */
+      -webkit-user-zoom: fixed !important;
+      -moz-user-zoom: fixed !important;
+      user-zoom: fixed !important;
+      
+      /* Evitar cualquier overlay de controles */
+      -webkit-media-controls-overlay-enclosure: none !important;
+      
+      /* Mejorar rendimiento en móvil */
+      transform: translateZ(0) !important;
+      -webkit-transform: translateZ(0) !important;
+      will-change: auto;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      
+      /* Asegurar que el video mantenga aspect ratio en móvil */
+      object-fit: cover !important;
+      width: 100% !important;
+      height: 100% !important;
+      
+      /* CRÍTICO: Asegurar que pointer-events esté deshabilitado en TODOS los navegadores móviles */
+      pointer-events: none !important;
+      
+      /* Prevenir selección de texto sobre el video */
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      user-select: none !important;
+      
+      /* Optimizar calidad de video en móvil */
+      image-rendering: -webkit-optimize-contrast !important;
+      image-rendering: optimizeQuality !important;
+    }
+    
+    /* Asegurar que nunca aparezcan controles en ningún estado */
+    .hero-centered-video:focus,
+    .hero-centered-video:hover,
+    .hero-centered-video:active,
+    .hero-centered-video:target,
+    .hero-centered-video:visited {
+      outline: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Ocultar cualquier elemento de control que pueda aparecer */
+    .hero-centered-video + *,
+    .hero-centered-video::before,
+    .hero-centered-video::after {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    /* NUEVO: Asegurar que el video NUNCA tenga z-index alto en móvil */
+    .hero-centered-video,
+    .hero-centered-video * {
+      z-index: 1 !important;
+      position: relative !important;
+    }
+    
+    /* NUEVO: El overlay transparente debe tener z-index MÁS ALTO */
+    .hero-video-container > div[style*="transparent"],
+    .hero-main-video > div[style*="transparent"] {
+      z-index: 999999 !important;
+      pointer-events: auto !important;
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-touch-callout: none !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+    }
+
+    /* Contenedor del video optimizado para móvil */
+    .hero-video-container {
+      /* Evitar que aparezcan controles al tocar el contenedor */
+      -webkit-touch-callout: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+      touch-action: none !important;
+      
+      /* Optimizar para móvil */
+      isolation: isolate;
+      contain: layout style paint;
+    }
+  }
+
+  /* Safari iOS específico - MÁXIMAS RESTRICCIONES */
+  @supports (-webkit-touch-callout: none) {
+    .hero-centered-video {
+      /* Bloquear menú contextual específico de iOS */
+      -webkit-touch-callout: none !important;
+      -webkit-user-callout: none !important;
+      
+      /* Prevenir cualquier acción del usuario */
+      -webkit-user-drag: none !important;
+      -webkit-user-modify: read-only !important;
+      
+      /* Optimizaciones específicas de Safari */
+      -webkit-backface-visibility: hidden !important;
+      -webkit-perspective: 1000px !important;
+      
+      /* CONFIGURACIÓN ULTRA ESPECÍFICA PARA SAFARI - ELIMINAR CONTROLES COMPLETAMENTE */
+      -webkit-media-controls: none !important;
+      -webkit-media-controls-panel: none !important;
+      -webkit-media-controls-enclosure: none !important;
+      -webkit-media-controls-overlay-enclosure: none !important;
+      -webkit-media-controls-start-playback-button: none !important;
+      -webkit-media-controls-play-button: none !important;
+      -webkit-media-controls-fullscreen-button: none !important;
+      -webkit-media-controls-timeline: none !important;
+      -webkit-media-controls-current-time-display: none !important;
+      -webkit-media-controls-time-remaining-display: none !important;
+      -webkit-media-controls-mute-button: none !important;
+      -webkit-media-controls-volume-slider: none !important;
+      -webkit-media-controls-seek-back-button: none !important;
+      -webkit-media-controls-seek-forward-button: none !important;
+      -webkit-media-controls-rewind-button: none !important;
+      -webkit-media-controls-return-to-realtime-button: none !important;
+      -webkit-media-controls-toggle-closed-captions-button: none !important;
+      -webkit-media-controls-wireless-playback-picker-button: none !important;
+      -webkit-media-controls-picture-in-picture-button: none !important;
+      -webkit-media-controls-overflow-button: none !important;
+      -webkit-media-controls-cast-button: none !important;
+      
+      /* BLOQUEAR COMPLETAMENTE APARIENCIA DE CONTROLES */
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      
+      /* FORZAR INVISIBILIDAD TOTAL DE CUALQUIER ELEMENTO DE CONTROL */
+      -webkit-user-interface: none !important;
+      
+      /* CONFIGURACIÓN ESPECÍFICA PARA PREVENIR CONTROLES EN SAFARI */
+      -webkit-text-size-adjust: none !important;
+      -webkit-transform-style: preserve-3d !important;
+    }
+    
+    /* SELECTOR ESPECÍFICO PARA SAFARI - Todos los pseudo-elementos de controles */
+    .hero-centered-video::-webkit-media-controls,
+    .hero-centered-video::-webkit-media-controls-enclosure,
+    .hero-centered-video::-webkit-media-controls-panel,
+    .hero-centered-video::-webkit-media-controls-play-button,
+    .hero-centered-video::-webkit-media-controls-start-playback-button,
+    .hero-centered-video::-webkit-media-controls-fullscreen-button,
+    .hero-centered-video::-webkit-media-controls-timeline,
+    .hero-centered-video::-webkit-media-controls-current-time-display,
+    .hero-centered-video::-webkit-media-controls-time-remaining-display,
+    .hero-centered-video::-webkit-media-controls-mute-button,
+    .hero-centered-video::-webkit-media-controls-volume-slider,
+    .hero-centered-video::-webkit-media-controls-seek-back-button,
+    .hero-centered-video::-webkit-media-controls-seek-forward-button,
+    .hero-centered-video::-webkit-media-controls-rewind-button,
+    .hero-centered-video::-webkit-media-controls-return-to-realtime-button,
+    .hero-centered-video::-webkit-media-controls-toggle-closed-captions-button,
+    .hero-centered-video::-webkit-media-controls-overlay-enclosure,
+    .hero-centered-video::-webkit-media-controls-overlay-play-button,
+    .hero-centered-video::-webkit-media-controls-wireless-playback-picker-button,
+    .hero-centered-video::-webkit-media-controls-picture-in-picture-button,
+    .hero-centered-video::-webkit-media-controls-overflow-button,
+    .hero-centered-video::-webkit-media-controls-cast-button {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      position: absolute !important;
+      left: -99999px !important;
+      top: -99999px !important;
+      z-index: -99999 !important;
+      pointer-events: none !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transform: scale(0) !important;
+      -webkit-transform: scale(0) !important;
+    }
+  }
+
+  /* Chrome móvil específico */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 768px) {
+    .hero-centered-video {
+      /* Bloquear comportamientos específicos de Chrome móvil */
+      -webkit-text-size-adjust: none !important;
+      
+      /* Optimizar rendimiento en Chrome móvil */
+      will-change: auto !important;
+      contain: strict !important;
+    }
+  }
+
+  /* Garantizar que el video se mantenga visible cuando está pausado */
+  .hero-centered-video:paused {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Estado específico para cuando el video está cargando */
+  .hero-centered-video[data-loading="true"] {
+    background-color: #000000 !important;
+    opacity: 0.8 !important;
+  }
+
+  /* MÓVIL: Ocultar completamente el botón de play y overlay al inicio */
+  @media (max-width: 768px) {
+    /* Ocultar overlay inicial de play en videos */
+    video::before,
+    video::after,
+    .hero-centered-video::before,
+    .hero-centered-video::after {
+      display: none !important;
+      content: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    
+    /* Ocultar overlay de play grande al inicio (Safari/iOS) */
+    video::-webkit-media-controls-overlay-play-button,
+    .hero-centered-video::-webkit-media-controls-overlay-play-button {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      position: absolute !important;
+      left: -99999px !important;
+      top: -99999px !important;
+      z-index: -99999 !important;
+      transform: scale(0) !important;
+      -webkit-transform: scale(0) !important;
+    }
+    
+    /* Forzar que el video empiece sin controles visibles */
+    video[autoplay],
+    .hero-centered-video[autoplay] {
+      background: transparent !important;
+    }
+    
+    /* Asegurar que el contenedor del video no muestre el play */
+    .hero-video-container::before,
+    .hero-video-container::after {
+      display: none !important;
+      content: none !important;
+    }
+    
+    /* Desactivar animaciones problemáticas en móvil para textos y botones */
+    .hero-section h1,
+    .hero-section p,
+    .hero-section button,
+    .hero-section-instructors h1,
+    .hero-section-instructors p,
+    .hero-section-instructors button {
+      animation: none !important;
+      will-change: auto !important;
+    }
+    
+    /* Estabilizar elementos durante el scroll en móvil */
+    .hero-section *,
+    .hero-section-instructors * {
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+  }
+
+  /* Hero Viewport Fit - PANTALLA COMPLETA EXACTA en desktop/tablet */
+  .hero-viewport-fit {
+    min-height: 100vh;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    /* Centrado vertical sin espacios inferiores */
+    justify-content: center;
+  }
+
+  /* TABLET: Pantalla completa exacta 100vh */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .hero-viewport-fit {
+      height: 100vh !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+
+  /* DESKTOP: Pantalla completa exacta 100vh */
+  @media (min-width: 1024px) {
+    .hero-viewport-fit {
+      height: 100vh !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+
+  /* Video principal - Separado y ancho en desktop/tablet, prominente en móvil */
+  .hero-main-video {
+    flex-shrink: 0;
+    flex-grow: 0;
+    max-height: 45vh;
+    min-height: 35vh;
+  }
+
+  /* TABLET: Video centrado y ajustado para 100vh */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .hero-main-video {
+      height: 45vh !important;
+      min-height: 40vh !important;
+      max-height: 50vh !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      align-self: center !important;
+    }
+  }
+
+  /* DESKTOP: Video centrado y ajustado para 100vh */
+  @media (min-width: 1024px) and (max-width: 1399px) {
+    .hero-main-video {
+      height: 50vh !important;
+      min-height: 45vh !important;
+      max-height: 55vh !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      align-self: center !important;
+    }
+  }
+
+  /* DESKTOP GRANDE: Video optimizado para pantallas grandes */
+  @media (min-width: 1400px) {
+    .hero-main-video {
+      height: 55vh !important;
+      min-height: 50vh !important;
+      max-height: 60vh !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      align-self: center !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-main-video {
+      max-height: 75vh;
+      min-height: 70vh;
+      height: 72vh;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-main-video {
+      max-height: 73vh;
+      min-height: 68vh;
+      height: 70vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-main-video {
+      max-height: 70vh;
+      min-height: 65vh;
+      height: 68vh;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .hero-main-video {
+      max-height: 68vh;
+      min-height: 63vh;
+      height: 65vh;
+    }
+  }
+
+  /* Video principal de INSTRUCTORES - Separado en desktop/tablet, prominente en móvil */
+  .hero-main-video-instructors {
+    flex-shrink: 0;
+    flex-grow: 0;
+    max-height: 45vh;
+    min-height: 35vh;
+  }
+
+  /* TABLET: Video instructores centrado y ajustado para 100vh */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .hero-main-video-instructors {
+      height: 45vh !important;
+      min-height: 40vh !important;
+      max-height: 50vh !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      align-self: center !important;
+    }
+  }
+
+  /* DESKTOP: Video instructores centrado y ajustado para 100vh */
+  @media (min-width: 1024px) and (max-width: 1399px) {
+    .hero-main-video-instructors {
+      height: 50vh !important;
+      min-height: 45vh !important;
+      max-height: 55vh !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      align-self: center !important;
+    }
+  }
+
+  /* DESKTOP GRANDE: Video instructores optimizado para pantallas grandes */
+  @media (min-width: 1400px) {
+    .hero-main-video-instructors {
+      height: 55vh !important;
+      min-height: 50vh !important;
+      max-height: 60vh !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      align-self: center !important;
+    }
+  }
+
+  /* LANDSCAPE DESKTOP/TABLET - 100vh optimizado para pantallas horizontales */
+  @media (min-width: 769px) and (max-height: 500px) {
+    .hero-viewport-fit {
+      height: 100vh !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 !important;
+    }
+    
+    .hero-section > div {
+      height: 100vh !important;
+      gap: 0.5rem !important;
+      padding: 0.5rem 1rem !important;
+    }
+    
+    .hero-main-video,
+    .hero-main-video-instructors {
+      height: 35vh !important;
+      min-height: 30vh !important;
+      max-height: 40vh !important;
+      margin: 0 !important;
+    }
+    
+    .hero-video-container {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+    
+    .hero-content-container {
+      padding: 0 !important;
+      gap: 0.5rem !important;
+      flex-shrink: 1 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-main-video-instructors {
+      max-height: 75vh;
+      min-height: 70vh;
+      height: 72vh;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-main-video-instructors {
+      max-height: 73vh;
+      min-height: 68vh;
+      height: 70vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-main-video-instructors {
+      max-height: 70vh;
+      min-height: 65vh;
+      height: 68vh;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .hero-main-video-instructors {
+      max-height: 68vh;
+      min-height: 63vh;
+      height: 65vh;
+    }
+  }
+
+  /* Espaciado específico para hero de instructores - SOLO móvil */
+  @media (max-width: 768px) {
+    .hero-section-instructors > div {
+      padding-top: 0.75rem !important;
+      padding-bottom: 1rem !important;
+    }
+    
+    .hero-content-container-instructors {
+      padding: 0.75rem 0 1rem !important;
+      gap: 0.75rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-section-instructors > div {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.75rem !important;
+    }
+    
+    .hero-content-container-instructors {
+      padding: 0.5rem 0 0.75rem !important;
+    }
+  }
+
+  /* Landscape específico para instructores */
+  @media (max-width: 1023px) and (max-height: 500px) {
+    .hero-main-video-instructors {
+      max-height: 70vh;
+      min-height: 65vh;
+      height: 68vh;
+    }
+    
+    .hero-section-instructors > div {
+      padding-top: 0.5rem !important;
+      padding-bottom: 1rem !important;
+    }
+  }
+
+  @media (max-width: 1023px) and (max-height: 400px) {
+    .hero-main-video-instructors {
+      max-height: 65vh;
+      min-height: 60vh;
+      height: 62vh;
+    }
+  }
+
+  /* Video expandido - MASIVO en móvil para dominancia visual total */
+  .hero-video-expanded {
+    min-height: 35vh;
+    max-height: 42vh;
+    height: auto;
+    overflow: hidden;
+    contain: layout style;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  /* MOBILE: Videos prominentes solo en móvil, expandidos originales en tablet/desktop */
+  @media (max-width: 768px) {
+    .hero-video-expanded {
+      min-height: 70vh;
+      max-height: 75vh;
+      aspect-ratio: 4/5; /* Más vertical que horizontal */
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-video-expanded {
+      min-height: 68vh;
+      max-height: 73vh;
+      aspect-ratio: 3/4; /* Aún más vertical */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-video-expanded {
+      min-height: 65vh;
+      max-height: 70vh;
+      aspect-ratio: 2/3; /* Muy vertical */
+    }
+  }
+
+  @media (max-width: 360px) {
+    .hero-video-expanded {
+      min-height: 63vh;
+      max-height: 68vh;
+      aspect-ratio: 1/1; /* Cuadrado */
+    }
+  }
+
+
+
+  /* Título principal - Tamaño adaptativo que SIEMPRE cabe en una línea */
+  .hero-main-title {
+    font-size: clamp(1rem, 4.5vw, 6rem);
+    line-height: 0.85;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+    white-space: nowrap !important;
+  }
+
+  /* Contenedor del título - Espacio optimizado para visibilidad total */
+  .hero-title-container {
+    flex-shrink: 0;
+    min-height: auto;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    z-index: 10;
+    position: relative;
+  }
+
+  /* Contenedor de contenido inferior - Separado del video en desktop/tablet */
+  .hero-content-container {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 0.75rem 0 1rem;
+    flex: 0 0 auto;
+    min-height: 0;
+    overflow: visible;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* TABLET: Contenido ajustado para 100vh total */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .hero-content-container {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      text-align: center !important;
+      height: auto !important;
+      flex-shrink: 1 !important;
+      flex-grow: 0 !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    
+    /* Título centrado en tablet */
+    .hero-title-aligned {
+      justify-content: center !important;
+      text-align: center !important;
+    }
+    
+    /* Descripción centrada en tablet */
+    .hero-description-large {
+      text-align: center !important;
+      margin: 0.5rem auto !important;
+    }
+    
+    /* Botón centrado en tablet */
+    .hero-content-container .flex.flex-col:last-child {
+      align-items: center !important;
+      margin: 0 !important;
+    }
+  }
+
+  /* DESKTOP: Contenido ajustado para 100vh total */
+  @media (min-width: 1024px) {
+    .hero-content-container {
+      display: grid !important;
+      grid-template-columns: 2fr 1fr !important;
+      gap: 2rem !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      height: auto !important;
+      flex-shrink: 1 !important;
+      flex-grow: 0 !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+
+  /* DESKTOP Y TABLET: Contenedor del contenido ajustado para 100vh */
+  @media (min-width: 769px) {
+    .hero-section .w-full.flex-1 {
+      position: relative !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      height: auto !important;
+      flex-shrink: 1 !important;
+      flex-grow: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+  }
+
+  /* TABLET Y DESKTOP: Título container optimizado para 100vh */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .hero-title-container {
+      margin: 0.5rem 0 !important;
+      padding: 0 !important;
+      flex-shrink: 0 !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title-container {
+      margin: 0.75rem 0 !important;
+      padding: 0 !important;
+      flex-shrink: 0 !important;
+    }
+  }
+
+  /* TABLET Y DESKTOP: Ajustes adicionales para garantizar 100vh */
+  @media (min-width: 769px) {
+    /* Hero section fijo a 100vh */
+    .hero-section {
+      height: 100vh !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+      overflow: hidden !important;
+    }
+    
+    /* Título responsive para caber siempre */
+    .hero-main-title {
+      font-size: clamp(1.5rem, 4vw, 4rem) !important;
+      line-height: 0.9 !important;
+      margin: 0 !important;
+    }
+    
+    /* Descripción compacta pero legible */
+    .hero-description-large {
+      font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important;
+      line-height: 1.3 !important;
+      margin: 0.5rem 0 !important;
+    }
+    
+    /* Botón compacto */
+    .hero-content-container button {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem) !important;
+      padding: 0.75rem 1.5rem !important;
+      min-height: auto !important;
+    }
+  }
+
+  /* DESKTOP: Optimizaciones específicas */
+  @media (min-width: 1024px) {
+    .hero-main-title {
+      font-size: clamp(2rem, 4.5vw, 5rem) !important;
+    }
+    
+    .hero-description-large {
+      font-size: clamp(1rem, 1.8vw, 1.4rem) !important;
+      line-height: 1.4 !important;
+    }
+    
+    .hero-content-container button {
+      font-size: clamp(1rem, 2vw, 1.25rem) !important;
+      padding: 1rem 2rem !important;
+    }
+  }
+
+  /* PANTALLAS ALTAS: Aprovechar espacio extra */
+  @media (min-width: 769px) and (min-height: 900px) {
+    .hero-main-video,
+    .hero-main-video-instructors {
+      height: 55vh !important;
+      min-height: 50vh !important;
+      max-height: 60vh !important;
+    }
+    
+    .hero-section > div {
+      gap: 2rem !important;
+      padding: 2rem !important;
+    }
+    
+    .hero-content-container {
+      gap: 1.5rem !important;
+    }
+    
+    .hero-main-title {
+      font-size: clamp(2.5rem, 5vw, 6rem) !important;
+    }
+    
+    .hero-description-large {
+      font-size: clamp(1.1rem, 2vw, 1.6rem) !important;
+      margin: 1rem 0 !important;
+    }
+  }
+
+  /* PANTALLAS MUY ALTAS: Máximo aprovechamiento */
+  @media (min-width: 769px) and (min-height: 1200px) {
+    .hero-main-video,
+    .hero-main-video-instructors {
+      height: 60vh !important;
+      min-height: 55vh !important;
+      max-height: 65vh !important;
+    }
+    
+    .hero-main-title {
+      font-size: clamp(3rem, 6vw, 7rem) !important;
+    }
+    
+    .hero-description-large {
+      font-size: clamp(1.2rem, 2.2vw, 1.8rem) !important;
+      margin: 1.5rem 0 !important;
+    }
+  }
+
+  /* Separador de título - IDÉNTICO comportamiento a las palabras */
+  .hero-title-separator {
+    display: inline-block !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    vertical-align: baseline !important;
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    color: #ff9e03 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    text-indent: 0 !important;
+    box-sizing: content-box !important;
+    font-feature-settings: 'kern' 0, 'liga' 0 !important;
+    text-rendering: optimizeSpeed !important;
+    /* Eliminar cualquier espacio invisible del carácter | */
+    font-variant-numeric: normal !important;
+    font-variant-ligatures: none !important;
+  }
+
+  /* Asegurar que el color naranja se mantenga en todos los contextos */
+  .hero-title-separator,
+  .text-\[#ff9e03\] {
+    color: #ff9e03 !important;
+  }
+
+  /* Palabras del título - IDÉNTICO comportamiento a los separadores */
+  .hero-title-word {
+    transition: color 0.3s ease;
+    cursor: pointer;
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    letter-spacing: inherit !important;
+    word-spacing: 0 !important;
+    text-indent: 0 !important;
+    box-sizing: content-box !important;
+    font-feature-settings: 'kern' 0, 'liga' 0 !important;
+    text-rendering: optimizeSpeed !important;
+    vertical-align: baseline !important;
+    /* Eliminar cualquier factor tipográfico que pueda afectar espaciado */
+    font-variant-numeric: normal !important;
+    font-variant-ligatures: none !important;
+  }
+
+  .hero-title-word:hover {
+    color: #0365ff !important;
+  }
+
+
+
+  /* Ajustes para laptop */
+  @media (max-width: 1200px) {
+    .hero-main-title {
+      font-size: clamp(0.9rem, 4.2vw, 5rem);
+    }
+    
+    .hero-video-expanded {
+      min-height: 32vh;
+      max-height: 40vh;
+    }
+  }
+
+  /* Ajustes para tablet */
+  @media (max-width: 1023px) {
+    .hero-main-title {
+      font-size: clamp(0.8rem, 3.8vw, 4.5rem);
+      line-height: 0.8;
+    }
+    
+    .hero-centered-video,
+    .hero-centered-image {
+      object-position: center 40% !important;
+    }
+    
+    .hero-video-expanded {
+      min-height: 55vh;
+      max-height: 68vh;
+      aspect-ratio: 16/10; /* Ligeramente más cuadrado que 16/9 */
+    }
+
+    /* Pantalla completa en tablet - ZERO PADDING INFERIOR */
+    .hero-viewport-fit {
+      min-height: 100vh;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+  }
+
+  /* Ajustes para móvil grande */
+  @media (max-width: 768px) {
+    .hero-main-title {
+      font-size: clamp(0.7rem, 3.5vw, 3.5rem);
+      line-height: 0.75;
+    }
+    
+    .hero-centered-video,
+    .hero-centered-image {
+      object-position: center 35% !important;
+    }
+
+    /* Pantalla completa en móvil - ZERO PADDING INFERIOR */
+    .hero-viewport-fit {
+      min-height: 100vh;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    
+    /* Espaciado OPTIMIZADO para videos prominentes */
+    .hero-section > div {
+      padding-top: 0.75rem !important;
+      padding-bottom: 1rem !important;
+    }
+    
+    .hero-section {
+      padding-bottom: 0 !important;
+    }
+  }
+
+  /* Ajustes para móvil */
+  @media (max-width: 640px) {
+    .hero-main-title {
+      font-size: clamp(0.6rem, 3.2vw, 3rem);
+      line-height: 0.7;
+    }
+    
+    .hero-centered-video,
+    .hero-centered-image {
+      object-position: center 30% !important;
+    }
+
+    /* Pantalla completa en móvil pequeño con contenido visible */
+    .hero-viewport-fit {
+      min-height: 100vh;
+      padding-bottom: 1rem !important;
+    }
+    
+    .hero-section {
+      padding-bottom: 1rem !important;
+    }
+    
+    .hero-section > div {
+      padding-top: 1rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+  }
+
+  /* Móvil pequeño */
+  @media (max-width: 480px) {
+    .hero-main-title {
+      font-size: clamp(0.5rem, 2.8vw, 2.5rem);
+      line-height: 0.65;
+    }
+    
+    /* Ajustar centrado vertical en móvil pequeño - ZERO SPACING TOTAL */
+    .hero-viewport-fit {
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .hero-section {
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .hero-section > div {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.75rem !important;
+    }
+    
+    .hero-content-container {
+      padding: 0.5rem 0 0.75rem !important;
+    }
+  }
+
+  /* Móvil muy pequeño */
+  @media (max-width: 360px) {
+    .hero-main-title {
+      font-size: clamp(0.45rem, 2.5vw, 2rem);
+      line-height: 0.6;
+    }
+  }
+
+  /* Móvil ultra pequeño - Garantizar que siempre quepa */
+  @media (max-width: 320px) {
+    .hero-main-title {
+      font-size: clamp(0.4rem, 2.2vw, 1.8rem);
+      line-height: 0.55;
+    }
+    
+    .hero-title-horizontal {
+      gap: clamp(0.05rem, 0.3vw, 0.15rem);
+    }
+  }
+
+  /* MODIFICACIONES ESPECÍFICAS PARA MÓVIL SOLICITADAS */
+  
+  /* 1. Hero título más grande en móvil para mejor legibilidad - SOLO TAMAÑO, SIN DIVISIÓN */
+  @media (max-width: 1023px) {
+    .hero-main-title-mobile {
+      font-size: clamp(1rem, 4.5vw, 3.5rem) !important;
+      line-height: 1 !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-main-title-mobile {
+      font-size: clamp(1.1rem, 5.2vw, 3rem) !important;
+      line-height: 0.95 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-main-title-mobile {
+      font-size: clamp(1.2rem, 5.8vw, 2.5rem) !important;
+      line-height: 0.9 !important;
+    }
+  }
+
+  /* 5. Título de instructores ESPECÍFICO - dividido en dos líneas en móvil CON TAMAÑO GRANDE */
+  @media (max-width: 1023px) {
+    .hero-instructors-title-split {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      /* MISMO TAMAÑO QUE HERO PRINCIPAL EN TABLET */
+      font-size: clamp(1rem, 4.5vw, 3.5rem) !important;
+      line-height: 1 !important;
+      font-weight: 600 !important;
+    }
+    
+    .hero-instructors-title-split span.block {
+      display: block !important;
+      line-height: 0.9 !important;
+      width: 100% !important;
+      text-align: center !important;
+      word-spacing: 0.1em !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      position: relative !important;
+    }
+    
+    .hero-instructors-title-split span.block:first-child {
+      margin-bottom: 0.1rem !important;
+      padding-bottom: 0 !important;
+    }
+    
+    .hero-instructors-title-split span.block:last-child {
+      margin-top: 0.1rem !important;
+      padding-top: 0 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* MISMO TAMAÑO QUE HERO PRINCIPAL EN MÓVIL */
+    .hero-instructors-title-split {
+      font-size: clamp(1.1rem, 5.2vw, 3rem) !important;
+      line-height: 0.95 !important;
+    }
+    
+    .hero-instructors-title-split span.block {
+      line-height: 0.85 !important;
+      word-spacing: 0.05em !important;
+    }
+    
+    .hero-instructors-title-split span.block:first-child {
+      margin-bottom: 0.1rem !important;
+      padding-bottom: 0 !important;
+    }
+    
+    .hero-instructors-title-split span.block:last-child {
+      margin-top: 0.05rem !important;
+      padding-top: 0 !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    /* MISMO TAMAÑO QUE HERO PRINCIPAL EN MÓVIL PEQUEÑO */
+    .hero-instructors-title-split {
+      font-size: clamp(1.2rem, 5.8vw, 2.5rem) !important;
+      line-height: 0.9 !important;
+    }
+    
+    .hero-instructors-title-split span.block {
+      line-height: 0.8 !important;
+      word-spacing: 0.02em !important;
+    }
+    
+    .hero-instructors-title-split span.block:first-child {
+      margin-bottom: 0.1rem !important;
+      padding-bottom: 0 !important;
+    }
+    
+    .hero-instructors-title-split span.block:last-child {
+      margin-top: 0.05rem !important;
+      padding-top: 0 !important;
+    }
+  }
+
+  /* Asegurar que en desktop se vea en una sola línea */
+  @media (min-width: 1024px) {
+    .hero-instructors-title-split {
+      display: block !important;
+      flex-direction: unset !important;
+      align-items: unset !important;
+      justify-content: unset !important;
+      /* Título más grande en desktop como en tablet */
+      font-size: clamp(0.8rem, 3.8vw, 4.5rem) !important;
+      line-height: 0.8 !important;
+    }
+    
+    .hero-instructors-title-split span.lg\:inline {
+      display: inline !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    .hero-instructors-title-split span.lg\:ml-2 {
+      margin-left: 0.5rem !important;
+    }
+  }
+
+  /* 6. Contenedor del título de instructores - CENTRADO GARANTIZADO EN MÓVIL */
+  @media (max-width: 1023px) {
+    .hero-main-title-mobile-container {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+  }
+
+  /* Asegurar que el hero principal SIEMPRE mantenga su estructura horizontal */
+  @media (max-width: 1023px) {
+    .hero-title-horizontal:not(.hero-instructors-title-split) {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: clamp(0.3rem, 1.5vw, 1rem) !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+    }
+    
+    .hero-title-horizontal:not(.hero-instructors-title-split) span {
+      display: inline-block !important;
+      white-space: nowrap !important;
+    }
+  }
+
+  /* 7. Espaciado entre video y título en móvil de instructores - Muy reducido */
+  @media (max-width: 1023px) {
+    .hero-title-spacing-mobile {
+      padding-top: 0.25rem !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title-spacing-mobile {
+      padding-top: 0.25rem !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-title-spacing-mobile {
+      padding-top: 0.25rem !important;
+    }
+  }
+
+  /* Mantener espaciado reducido en desktop */
+  @media (min-width: 1024px) {
+    .hero-title-spacing-mobile {
+      padding-top: 0.5rem !important;
+    }
+  }
+
+
+
+  /* 2. Opacidad MÁS VISIBLE para imágenes en "CAMBIO REAL" en móvil */
+  @media (max-width: 1023px) {
+    .cambio-real-mobile-images {
+      opacity: 1 !important;
+      /* Anti-parpadeo para Safari móvil */
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Transición suave anti-parpadeo */
+      transition: opacity 0.3s ease !important;
+      will-change: auto !important;
+    }
+    
+    /* Específico para animaciones de imágenes cambio real - sin parpadeo */
+    .cambio-real-mobile-images img,
+    .cambio-real-mobile-images .figma-image {
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      opacity: inherit !important;
+    }
+  }
+
+  /* 3. Centrar imágenes de beneficios en móvil (eliminamos movimiento lateral) */
+  @media (max-width: 1023px) {
+    .benefits-image-left-mobile,
+    .benefits-image-right-mobile {
+      transform: translateX(0) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      position: relative !important;
+      left: auto !important;
+      right: auto !important;
+    }
+  }
+
+  /* 4. Fondo naranja completo para "Por qué HerSafe" en móvil con texto centrado */
+  @media (max-width: 1023px) {
+    .why-hersafe-mobile-orange {
+      background-color: #ff9e03 !important;
+      background-image: none !important;
+      text-align: center !important;
+    }
+    
+    .why-hersafe-mobile-orange .absolute {
+      display: none !important;
+    }
+    
+    .why-hersafe-mobile-orange .text-white {
+      color: #ffffff !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+    }
+    
+    .why-hersafe-mobile-orange .text-\[#0365ff\] {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
+    }
+
+    .why-hersafe-mobile-orange .space-y-8,
+    .why-hersafe-mobile-orange .space-y-12 {
+      text-align: center !important;
+    }
+
+    .why-hersafe-mobile-orange .text-left {
+      text-align: center !important;
+    }
+
+    .why-hersafe-mobile-orange .max-w-6xl {
+      margin: 0 auto !important;
+    }
+  }
+
+  /* ============================================ */
+  /* CLASES CRÍTICAS PARA RESPONSIVE DE IMÁGENES */
+  /* ============================================ */
+  
+  /* Mobile: Ocultar imágenes desktop completamente */
+  @media (max-width: 1023px) {
+    img.hidden.lg\:block,
+    .hidden.lg\:block {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  }
+  
+  /* Desktop: Mostrar solo imágenes desktop */
+  @media (min-width: 1024px) {
+    img.lg\:hidden,
+    .lg\:hidden {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    
+    img.hidden.lg\:block,
+    .hidden.lg\:block {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      left: auto !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  /* Pantallas ultra anchas - permitir títulos más grandes */
+  @media (min-width: 1400px) {
+    .hero-main-title {
+      font-size: clamp(2rem, 5vw, 7rem);
+    }
+  }
+
+  @media (min-width: 1800px) {
+    .hero-main-title {
+      font-size: clamp(2.5rem, 5.5vw, 8rem);
+    }
+  }
+
+  /* Ajustes específicos para hero de instructores en pantallas pequeñas */
+  @media (max-height: 600px) {
+    .hero-instructors-title-split {
+      font-size: clamp(1rem, 3.5vw, 3.5rem) !important;
+      line-height: 0.8 !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .hero-instructors-title-split + p {
+      font-size: clamp(0.7rem, 1.3vw, 0.9rem) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .hero-content-container {
+      padding: 0.25rem 0 !important;
+      gap: 0.5rem !important;
+    }
+  }
+
+  /* Pantallas con altura limitada (landscape móvil) - Videos MEGA expandidos */
+  @media (max-height: 500px) {
+    .hero-viewport-fit {
+      min-height: 100vh;
+      margin-top: 0;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .hero-video-expanded {
+      min-height: 60vh;
+      max-height: 75vh;
+      aspect-ratio: 3/2; /* Más cuadrado en landscape */
+    }
+    
+    .hero-main-title {
+      font-size: clamp(0.6rem, 2.8vw, 1.6rem);
+      line-height: 0.6;
+    }
+
+    /* Video prominente en landscape móvil */
+    .hero-main-video {
+      max-height: 70vh;
+      min-height: 65vh;
+      height: 68vh;
+    }
+  }
+
+  @media (max-height: 400px) {
+    .hero-viewport-fit {
+      min-height: 100vh;
+      margin-top: 0;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .hero-video-expanded {
+      min-height: 55vh;
+      max-height: 70vh;
+      aspect-ratio: 4/3; /* Más cuadrado en pantallas muy bajas */
+    }
+    
+    .hero-main-title {
+      font-size: clamp(0.5rem, 2.2vw, 1.3rem);
+      line-height: 0.55;
+    }
+
+    /* Video prominente incluso en pantallas muy pequeñas */
+    .hero-main-video {
+      max-height: 65vh;
+      min-height: 60vh;
+      height: 62vh;
+    }
+  }
+
+  /* Pantallas altas - equilibrio entre video y contenido */
+  @media (min-height: 900px) {
+    .hero-main-title {
+      font-size: clamp(2.5rem, 7vw, 8rem);
+      line-height: 0.9;
+    }
+    
+    .hero-video-expanded {
+      min-height: 50vh;
+      max-height: 58vh;
+    }
+
+    .hero-title-container {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .hero-content-container {
+      padding: 1.25rem 0 2rem;
+      gap: 1.5rem;
+    }
+
+    /* Descripción proporcionada en pantallas altas con desktop */
+    @media (min-width: 1024px) {
+      .hero-description-large {
+        font-size: clamp(1rem, 1.9vw, 1.35rem) !important;
+        line-height: 1.22 !important;
+      }
+    }
+  }
+
+  @media (min-height: 1200px) {
+    .hero-main-title {
+      font-size: clamp(3rem, 8vw, 10rem);
+      line-height: 0.95;
+    }
+    
+    .hero-video-expanded {
+      min-height: 55vh;
+      max-height: 63vh;
+    }
+
+    .hero-title-container {
+      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+    }
+
+    .hero-content-container {
+      padding: 1.5rem 0 2.5rem;
+      gap: 2rem;
+    }
+
+    /* Descripción equilibrada en pantallas muy altas con desktop */
+    @media (min-width: 1024px) {
+      .hero-description-large {
+        font-size: clamp(1.1rem, 2rem, 1.5rem) !important;
+        line-height: 1.18 !important;
+      }
+    }
+  }
+
+  /* Descripción siempre completamente visible - NUNCA CORTADA, SEPARACIÓN POR PALABRAS */
+  .hero-description {
+    overflow: visible !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    /* NUNCA cortar texto - separar solo por palabras completas */
+    word-wrap: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    /* NUNCA usar guiones para separar palabras */
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    /* Separación natural por espacios */
+    white-space: normal !important;
+    /* NO definir font-size, line-height, max-width aquí - lo maneja hero-description-large */
+  }
+
+  /* CONFIGURACIÓN UNIFICADA PARA hero-description-large - NUNCA CORTADO, SEPARACIÓN POR PALABRAS */
+  /* Base - Para móvil pequeño y general */
+  .hero-description-large {
+    /* TIPOGRAFÍA DE TEXTO - Darker Grotesque como especificado */
+    font-family: 'Darker Grotesque', sans-serif !important;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem) !important;
+    line-height: 1.4 !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+    word-spacing: 0.02em !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    /* CONTENEDOR SIN RESTRICCIONES DE ANCHO - TEXTO COMPLETO SIEMPRE VISIBLE */
+    max-width: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+    display: block !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    word-wrap: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    /* NUNCA usar guiones para separar palabras */
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    font-display: swap !important;
+  }
+
+  /* Móvil pequeño (480px y menos) */
+  @media (max-width: 480px) {
+    .hero-description-large {
+      /* TIPOGRAFÍA DE TEXTO mantenida */
+      font-family: 'Darker Grotesque', sans-serif !important;
+      font-size: clamp(0.85rem, 1.6vw, 1rem) !important;
+      line-height: 1.35 !important;
+      font-weight: 400 !important;
+      letter-spacing: 0.005em !important;
+      word-spacing: 0.01em !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      display: block !important;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      overflow: visible !important;
+      white-space: normal !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+    }
+  }
+
+  /* Móvil (768px y menos) */
+  @media (max-width: 768px) {
+    .hero-description-large {
+      /* TIPOGRAFÍA DE TEXTO mantenida */
+      font-family: 'Darker Grotesque', sans-serif !important;
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem) !important;
+      line-height: 1.4 !important;
+      font-weight: 400 !important;
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      display: block !important;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      overflow: visible !important;
+      white-space: normal !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+    }
+  }
+
+  /* Tablet (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero-description-large {
+      /* TIPOGRAFÍA DE TEXTO mantenida */
+      font-family: 'Darker Grotesque', sans-serif !important;
+      font-size: clamp(0.95rem, 1.9vw, 1.2rem) !important;
+      line-height: 1.38 !important;
+      font-weight: 425 !important;
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      display: block !important;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      overflow: visible !important;
+      white-space: normal !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+    }
+  }
+
+  /* Desktop (1024px y más) - NUNCA CORTADO, SEPARACIÓN POR PALABRAS */
+  @media (min-width: 1024px) {
+    .hero-description-large {
+      /* TIPOGRAFÍA DE TEXTO mantenida */
+      font-family: 'Darker Grotesque', sans-serif !important;
+      font-size: clamp(1rem, 2vw, 1.3rem) !important;
+      line-height: 1.4 !important;
+      font-weight: 400 !important;
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      margin: 0 !important;
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      display: block !important;
+      padding: 0 !important;
+      /* Alineación según el título */
+      text-align: left !important;
+      /* Configuración optimizada */
+      box-sizing: border-box !important;
+      position: relative !important;
+      /* Configuración de texto optimizada para Darker Grotesque */
+      font-feature-settings: 'kern' 1, 'liga' 0 !important;
+      text-rendering: optimizeSpeed !important;
+      font-display: swap !important;
+    }
+  }
+
+  /* Desktop medio (1200px+) - NUNCA CORTADO, SEPARACIÓN POR PALABRAS */
+  @media (min-width: 1200px) {
+    .hero-description-large {
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      margin: 0 !important;
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      /* Espaciado natural de Darker Grotesque */
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+    }
+  }
+
+  /* Desktop grande (1400px+) - NUNCA CORTADO, SEPARACIÓN POR PALABRAS */
+  @media (min-width: 1400px) {
+    .hero-description-large {
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      margin: 0 !important;
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      /* Espaciado natural de Darker Grotesque */
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+    }
+  }
+
+  /* Pantallas muy anchas (1600px+) - NUNCA CORTADO, SEPARACIÓN POR PALABRAS */
+  @media (min-width: 1600px) {
+    .hero-description-large {
+      /* Texto proporcional para pantallas muy anchas */
+      font-size: clamp(1.15rem, 2.15vw, 1.45rem) !important;
+      line-height: 1.3 !important;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      margin: 0 !important;
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      /* Espaciado natural de Darker Grotesque */
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+    }
+  }
+
+  @media (min-width: 1800px) {
+    .hero-description-large {
+      /* Texto optimizado para pantallas ultra anchas */
+      font-size: clamp(1.2rem, 2.2vw, 1.5rem) !important;
+      line-height: 1.32 !important;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      margin: 0 !important;
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      /* Espaciado natural de Darker Grotesque */
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+    }
+  }
+
+  @media (min-width: 2200px) {
+    .hero-description-large {
+      /* Texto para monitores 4K+ */
+      font-size: clamp(1.25rem, 2.3vw, 1.6rem) !important;
+      line-height: 1.28 !important;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      /* TEXTO COMPLETO SIEMPRE VISIBLE - SIN RESTRICCIONES */
+      margin: 0 !important;
+      max-width: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      /* Espaciado natural de Darker Grotesque */
+      letter-spacing: 0.01em !important;
+      word-spacing: 0.02em !important;
+    }
+  }
+
+  /* Configuraciones de hero-description eliminadas - 
+     Se usan solo las de hero-description-large para consistencia total */
+
+  /* REGLA GLOBAL: NUNCA CORTAR TEXTOS EN TODA LA APLICACIÓN */
+  .hero-description-single-line {
+    /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+  }
+
+  @media (max-width: 768px) {
+    .hero-description-single-line {
+      /* MANTENER TEXTO COMPLETO EN MÓVIL */
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      line-height: 1.3 !important;
+    }
+  }
+
+  /* Variables CSS para altura del navbar - SOBREPUESTO (no afecta layout) */
+  :root {
+    --navbar-height: 0px; /* Sobrepuesto - no afecta el layout */
+  }
+
+  @media (max-width: 1024px) {
+    :root {
+      --navbar-height: 0px; /* Sobrepuesto - no afecta el layout */
+    }
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --navbar-height: 0px; /* Sobrepuesto - no afecta el layout */
+    }
+  }
+
+  @media (max-height: 500px) {
+    :root {
+      --navbar-height: 0px; /* Sobrepuesto - no afecta el layout */
+    }
+  }
+
+  /* ========================================
+     NAVBAR MÓVIL FIJO - SOLUCIÓN DEFINITIVA Y SIMPLE
+     ======================================== */
+
+  /* NAVBAR FIJO EN MÓVIL - REGLAS ULTRA SIMPLES Y EFECTIVAS */
+  .mobile-navbar-fixed {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 64px !important;
+    z-index: 999999 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Contenedor de la app - sin padding superior propio */
+  .mobile-app-container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* NAVBAR FIJO SOBREPUESTO EN MÓVIL */
+  @media (max-width: 1023px) {
+    .mobile-navbar-fixed,
+    .header-section,
+    [data-component="header"] {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100vw !important;
+      height: 64px !important;
+      z-index: 999999 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      /* Anti-parpadeo básico */
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+    }
+
+    /* SIN compensación en el body - navbar sobrepuesto */
+    body {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+    
+    /* Main content SIN margen - empieza desde arriba */
+    main,
+    .mobile-main {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    /* Hero section COMPLETO desde arriba - sin compensación */
+    .hero-section,
+    .hero-viewport-fit {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      min-height: 100vh !important;
+      /* Mejor centrado del contenido con navbar sobrepuesto */
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    
+    /* Contenedor interno del hero con espaciado superior mínimo para navbar */
+    .hero-section > div {
+      padding-top: 0.1rem !important;
+    }
+  }
+
+  /* Safari móvil específico - SIMPLE */
+  @supports (-webkit-touch-callout: none) {
+    .mobile-navbar-fixed,
+    .header-section {
+      position: fixed !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      transform: translate3d(0, 0, 0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* iOS safe area */
+      padding-top: env(safe-area-inset-top, 0) !important;
+    }
+  }
+
+  /* Landscape móvil - navbar compacto SOBREPUESTO */
+  @media (max-width: 1023px) and (max-height: 500px) {
+    header,
+    .header-section {
+      height: 56px !important;
+    }
+
+    body {
+      padding-top: 0 !important;
+    }
+
+    .hero-viewport-fit {
+      min-height: 100vh !important;
+      padding-bottom: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    
+    /* Espaciado equilibrado en landscape para mostrar contenido */
+    .hero-section > div {
+      padding-top: 0.5rem !important;
+      padding-bottom: 1rem !important;
+    }
+  }
+
+  /* ========================================
+     REGLA DE EMERGENCIA SIMPLE - NAVBAR FIJO
+     ======================================== */
+
+  /* Regla de emergencia directa para móvil - NAVBAR SOBREPUESTO */
+  @media screen and (max-width: 1023px) {
+    /* Forzar navbar fijo SOBREPUESTO */
+    header,
+    .mobile-navbar-fixed {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100vw !important;
+      height: 64px !important;
+      z-index: 999999 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      /* Fondo sólido y visible cuando sobrepuesto */
+      background: rgba(0, 0, 0, 0.85) !important;
+      backdrop-filter: blur(15px) !important;
+      -webkit-backdrop-filter: blur(15px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Body SIN padding - navbar sobrepuesto */
+    body {
+      padding-top: 0 !important;
+    }
+  }
+
+  /* Asegurar que el navbar esté siempre visible sobre el contenido */
+  .mobile-navbar-fixed {
+    isolation: isolate;
+    contain: layout style;
+  }
+
+  /* Video performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-centered-video {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+
+  /* Optimizaciones para conexiones lentas */
+  @media (prefers-reduced-data: reduce) {
+    .hero-centered-video {
+      display: none;
+    }
+    
+    .hero-centered-video + img {
+      display: block !important;
+    }
+  }
+
+  .title-font {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    font-display: swap;
+    /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+    word-wrap: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+  }
+
+  .subtitle-font {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-display: swap;
+    /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+    word-wrap: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+  }
+
+  .body-font {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    font-display: swap;
+    /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+    word-wrap: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+  }
+
+  .text-font {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    font-display: swap;
+    /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+    word-wrap: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+  }
+
+
+
+  /* Custom Toaster Styles */
+  .toaster-clean {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  [data-sonner-toaster] {
+    position: fixed !important;
+    top: 15% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100vw !important;
+    max-width: 580px !important;
+    z-index: 10000 !important;
+    max-height: 75vh !important;
+    overflow-y: scroll !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  [data-sonner-toaster]::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  [data-sonner-toast] {
+    background: rgba(17, 24, 39, 0.98) !important;
+    border: 2px solid #6b7280 !important;
+    border-radius: 16px !important;
+    width: 92vw !important;
+    max-width: 580px !important;
+    margin: 0 auto !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+    color: #f9fafb !important;
+    backdrop-filter: blur(12px) !important;
+  }
+
+  /* Ensure only one toast is visible */
+  [data-sonner-toaster] [data-sonner-toast]:not(:first-child) {
+    display: none !important;
+  }
+
+  /* Remove any default toaster styling */
+  [data-sonner-toaster] > div {
+    width: 100% !important;
+    max-width: 580px !important;
+  }
+
+  /* Hide any extra elements */
+  [data-sonner-toaster] > div:not([data-sonner-toast]) {
+    display: none !important;
+  }
+
+  /* Better text readability */
+  [data-sonner-toast] * {
+    color: #f9fafb !important;
+  }
+
+  [data-sonner-toast] input {
+    color: #f9fafb !important;
+    background: rgba(31, 41, 55, 0.9) !important;
+  }
+
+  [data-sonner-toast] input::placeholder {
+    color: #d1d5db !important;
+  }
+
+  /* Overlay for toaster */
+  [data-sonner-toaster]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    [data-sonner-toaster] {
+      top: 8% !important;
+      max-height: 85vh !important;
+    }
+    
+    [data-sonner-toast] {
+      width: 95vw !important;
+      max-width: none !important;
+    }
+  }
+
+  /* Optimizaciones de rendimiento esenciales */
+  .scroll-animation-element,
+  .page-transition {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* Asegurar que los ancestros del scroll horizontal no interfieran */
+  body:has(.hs-horizontal),
+  body:has(#instructors-hersafe-scroll) {
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+  }
+
+  /* Ocultar scrollbar solo en móvil cuando hay scroll horizontal */
+  @media (max-width: 1023px) {
+    body:has(.hs-horizontal),
+    body:has(#instructors-hersafe-scroll) {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+
+    body:has(.hs-horizontal)::-webkit-scrollbar,
+    body:has(#instructors-hersafe-scroll)::-webkit-scrollbar {
+      display: none !important;
+    }
+  }
+
+  /* Optimización para animaciones en scroll */
+  [data-motion="scroll"] {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* Contenedores de imagen con degradado integrado - se mueven junto con la imagen */
+  .image-container-gradient {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Degradado hacia la derecha (fusión con texto a la derecha) - Para fondo blanco */
+  .image-container-gradient-right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, transparent 15%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.8) 85%, #ffffff 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Degradado hacia la izquierda (fusión con texto a la izquierda) - Para fondo blanco */
+  .image-container-gradient-left::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, transparent 15%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.8) 85%, #ffffff 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Degradado hacia la derecha (fusión con texto a la derecha) - Para fondo negro */
+  .image-container-gradient-right-black::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, transparent 15%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 85%, #000000 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Degradado hacia la izquierda (fusión con texto a la izquierda) - Para fondo negro */
+  .image-container-gradient-left-black::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, transparent 15%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 85%, #000000 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+
+
+  /* Scrollbars controladas por las reglas específicas del body */
+
+
+
+
+
+  /* Inputs styling - solo para formularios en fondo azul */
+  [data-modal="true"] input, 
+  [data-modal="true"] textarea, 
+  [data-modal="true"] select {
+    caret-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  [data-modal="true"] input:focus, 
+  [data-modal="true"] textarea:focus, 
+  [data-modal="true"] select:focus {
+    caret-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* Secciones blancas - mantener texto negro */
+  .bg-white,
+  section.bg-white {
+    background-color: #ffffff !important;
+  }
+
+  .bg-white h1,
+  .bg-white h2, 
+  .bg-white h3,
+  .bg-white h4,
+  .bg-white p,
+  .bg-white span,
+  section.bg-white h1,
+  section.bg-white h2,
+  section.bg-white h3,
+  section.bg-white h4,
+  section.bg-white p,
+  section.bg-white span {
+    color: #000000 !important;
+  }
+
+  /* HerSafe Horizontal Scroll Section - Estructura exacta para "pinned scroll" */
+  
+  /* Página base */
+  section { 
+    padding: 3rem 1rem; 
+  }
+
+  /* Bloque horizontal */
+  .hs-horizontal { 
+    position: relative; 
+  }
+
+  /* Contenedor fijado en pantalla durante el tramo */
+  .hs-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background: #000000;
+    z-index: 1;
+    overscroll-behavior: contain;
+  }
+
+  .hs-title {
+    margin: 0;
+    padding: 3rem 1.5rem 2rem;
+    font-size: 2.8rem;
+    background: linear-gradient(to bottom, #000000 85%, rgba(0,0,0,0.98));
+    text-align: center;
+    position: relative;
+    z-index: 20;
+    line-height: 1;
+  }
+
+  .hs-viewport { 
+    overflow: hidden; 
+    position: relative; 
+    scroll-snap-type: x mandatory;
+  }
+
+  /* Pista horizontal */
+  .hs-track {
+    display: flex;
+    gap: 32px;               /* Espacio optimizado entre tarjetas */
+    padding: 1rem 1.5rem 3rem;
+    will-change: transform;
+    transform: translateX(0);
+  }
+
+  /* Tarjetas - diseño elegante para instructores */
+  .hs-card {
+    flex: 0 0 60vw;         /* 60% del ancho de la ventana - más compactas */
+    max-width: 550px;
+    min-width: 400px;       /* Ancho mínimo garantizado para crear scroll */
+    border-radius: 24px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    min-height: 340px;
+    transition: all 0.7s ease;
+  }
+  
+  .hs-card:hover {
+    transform: scale(1.02) translateY(-8px);
+  }
+
+  .hs-card img { 
+    display: block; 
+    width: 100%; 
+    height: 350px;
+    object-fit: cover;
+  }
+
+  @media (min-width: 1024px) {
+    .hs-card { 
+      flex-basis: 550px;
+      max-width: 550px;
+      min-height: 380px;
+    }
+    
+    .hs-title {
+      font-size: 3.5rem;
+      padding: 3rem 2rem 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hs-card {
+      flex: 0 0 85vw;
+      min-height: 320px;
+    }
+    
+    .hs-title {
+      font-size: 2.2rem;
+      padding: 2rem 1rem 1.5rem;
+    }
+  }
+
+  /* Soporte moderno: scroll-driven animations (si existe) */
+  @supports (animation-timeline: scroll()) {
+    .hs-horizontal { 
+      scroll-timeline: hs-tl y; 
+    }
+    
+    #instructors-hersafe-scroll { 
+      scroll-timeline: hs-tl y; 
+    }
+    
+    .hs-track {
+      animation-name: hs-slide;
+      animation-timeline: hs-tl;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+    
+    @keyframes hs-slide {
+      from { transform: translateX(0); }
+      to   { transform: translateX(var(--hs-end, -100%)); }
+    }
+  }
+
+  /* Reduce motion for users with motion sensitivity */
+  @media (prefers-reduced-motion: reduce) {
+    .page-transition {
+      transform: none !important;
+      transition: none !important;
+      animation: none !important;
+    }
+    
+    [data-motion="fade"],
+    [data-motion="slide"],
+    [data-motion="scale"] {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ========================================
+     NAVBAR FIJO Y OPTIMIZACIONES MÓVILES CRÍTICAS - MEJORADO
+     ======================================== */
+
+  /* NAVBAR FIJO EN MÓVIL - Garantizado con TODAS las reglas */
+  @media (max-width: 1023px) {
+    /* Selector ultra específico para el header */
+    header[class*="header"],
+    .header-section,
+    [data-component="header"] {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100vw !important;
+      height: 64px !important;
+      z-index: 99999 !important;
+      /* Anti-parpadeo específico para Safari móvil */
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Blur optimizado para Safari móvil */
+      backdrop-filter: blur(15px) !important;
+      -webkit-backdrop-filter: blur(15px) !important;
+      /* Contenido sin parpadeo */
+      contain: layout style !important;
+      /* Forzar posición */
+      margin: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Contenido del navbar - anti-parpadeo y posición fija */
+    .header-section *,
+    [data-component="header"] * {
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+    }
+
+    /* FORZAR que el header esté siempre visible y fijo */
+    .header-section {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    /* SIN compensación - navbar sobrepuesto */
+    body {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+    
+    /* Main content desde arriba sin interferencias */
+    main,
+    .mobile-main {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Hero section COMPLETO desde arriba */
+    .hero-viewport-fit,
+    .hero-section {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      min-height: 100vh !important;
+    }
+  }
+
+  /* Optimización general para dispositivos móviles - ANTI-PARPADEO SAFARI */
+  @media (max-width: 1023px) {
+    /* Reducir complejidad de animaciones en móvil - SAFARI SAFE */
+    * {
+      animation-duration: 0.3s !important;
+      transition-duration: 0.2s !important;
+      /* Forzar aceleración por hardware para todas las animaciones */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    /* Optimizar scrolling - SAFARI ESPECÍFICO */
+    html, body {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      /* Anti-parpadeo específico */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Reducir will-change en móvil para ahorrar memoria - SAFARI OPTIMIZADO */
+    .hero-centered-video,
+    .hero-centered-image {
+      will-change: auto !important;
+      /* Forzar aceleración específica */
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      transform: translate3d(0, 0, 0) !important;
+    }
+
+    /* Optimizar contenedores de imagen - ANTI-PARPADEO */
+    .image-container-gradient {
+      contain: layout style;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    /* Motion elements específicos - SAFARI ANTI-PARPADEO */
+    [data-motion]:not([data-motion="none"]),
+    .motion-div,
+    .motion-section {
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Optimización específica para Motion/Framer */
+      will-change: auto !important;
+    }
+
+    /* Benefits section específica - anti-parpadeo */
+    .benefits-section,
+    .benefits-section * {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
+  /* Optimizaciones específicas para Safari iOS - ANTI-PARPADEO ULTRA EFECTIVO - MEJORADO */
+  @supports (-webkit-touch-callout: none) {
+    /* Solo Safari iOS - TODAS las optimizaciones anti-parpadeo */
+    
+    /* Videos sin parpadeo */
+    .hero-centered-video {
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      transform: translate3d(0, 0, 0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Específico para iOS - prevenir parpadeos en reproducción */
+      -webkit-playsinline: true !important;
+      -webkit-user-select: none !important;
+    }
+
+    /* NAVBAR FIJO - Safari iOS específico - ULTRA ROBUSTO */
+    .header-section,
+    header[class*="header"],
+    [data-component="header"] {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100vw !important;
+      z-index: 99999 !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      transform: translate3d(0, 0, 0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Backdrop filter optimizado para iOS */
+      -webkit-backdrop-filter: blur(15px) !important;
+      backdrop-filter: blur(15px) !important;
+      /* iOS safe area */
+      padding-top: env(safe-area-inset-top, 0) !important;
+      /* Específico para iOS Safari */
+      -webkit-position: sticky !important;
+    }
+
+    /* TODAS las animaciones - anti-parpadeo iOS - SUAVIZADO */
+    * {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      /* Optimización específica para Safari iOS */
+      -webkit-perspective: 1000px;
+      perspective: 1000px;
+      /* Suavizar animaciones en iOS */
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    /* Imágenes específicas - cambio real - OPACIDAD MÁS VISIBLE */
+    .cambio-real-mobile-images {
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      transform: translate3d(0, 0, 0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Prevenir flash en iOS - transición suave */
+      -webkit-transition: opacity 0.3s ease, transform 0.3s ease !important;
+      transition: opacity 0.3s ease, transform 0.3s ease !important;
+      /* Opacidad más visible - aumentada de 0.35 a 0.55 */
+      opacity: 0.55 !important;
+    }
+
+    /* Motion/animaciones de Framer Motion - OPTIMIZADO */
+    [data-framer-appear-id],
+    [data-framer-size],
+    [style*="transform"],
+    [class*="motion"] {
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Animaciones suaves específicas para iOS */
+      -webkit-animation-timing-function: ease-out !important;
+      animation-timing-function: ease-out !important;
+    }
+
+    /* Sections principales - anti-parpadeo */
+    .hero-section,
+    .benefits-section,
+    section {
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      /* Contenido optimizado */
+      contain: layout style !important;
+    }
+
+    /* Prevenir zoom accidental en iOS */
+    input, textarea, select {
+      font-size: 16px !important;
+      -webkit-appearance: none;
+      /* Anti-parpadeo en inputs */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    /* Optimizar scrolling en iOS - sin parpadeo */
+    body {
+      -webkit-overflow-scrolling: touch;
+      overflow-scrolling: touch;
+      /* Anti-parpadeo global */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      /* SIN compensación - navbar sobrepuesto en iOS */
+      padding-top: 0 !important;
+    }
+
+    /* Específico para Motion components en Safari iOS */
+    div[style*="transform"],
+    div[style*="opacity"] {
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+    }
+  }
+
+  /* Optimizaciones para dispositivos de baja potencia */
+  @media (max-width: 768px) and (max-height: 1024px) {
+    /* Reducir efectos visuales complejos */
+    .image-container-gradient-right::after,
+    .image-container-gradient-left::after,
+    .image-container-gradient-right-black::after,
+    .image-container-gradient-left-black::after {
+      background: none !important;
+    }
+
+    /* Simplificar animaciones */
+    .hs-card:hover {
+      transform: none !important;
+    }
+
+    /* Reducir blur effects */
+    [data-sonner-toaster]::before {
+      backdrop-filter: none !important;
+    }
+  }
+
+  /* Optimizaciones para conexiones lentas */
+  @media (prefers-reduced-data: reduce) {
+    /* Ocultar videos en conexiones lentas */
+    .hero-centered-video {
+      display: none !important;
+    }
+
+    /* Mostrar imagen de fallback */
+    .hero-centered-video + img,
+    .hero-centered-image {
+      display: block !important;
+    }
+
+    /* Reducir animaciones */
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Optimización para toaster móvil */
+  .toaster-mobile-optimized {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Asegurar que videos se carguen correctamente en móvil */
+  @media (max-width: 768px) {
+    .hero-centered-video {
+      /* Forzar tamaño específico para evitar layout shifts */
+      min-height: 200px;
+      background: #000000 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000000"/></svg>') center/cover;
+      /* Optimizaciones adicionales para móvil */
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    /* Mejoras para formularios en móvil */
+    input, textarea, select {
+      /* Prevenir zoom en iOS */
+      font-size: 16px !important;
+      /* Mejorar legibilidad */
+      line-height: 1.4 !important;
+      /* Optimización anti-parpadeo */
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+  }
+
+  /* Optimizaciones específicas anti-parpadeo */
+  * {
+    /* Prevenir parpadeos durante animaciones */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+
+  /* Optimizar transiciones para Safari */
+  .page-content,
+  .mobile-main,
+  .hero-section,
+  .benefits-section {
+    /* Forzar aceleración por hardware */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /* Prevenir parpadeos */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Optimización específica para videos en Safari iOS */
+  @supports (-webkit-appearance: none) and (not (background: -webkit-named-image(i))) {
+    /* Solo Safari */
+    .hero-centered-video {
+      /* Configuración específica para Safari */
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      mask-image: radial-gradient(white, black);
+    }
+  }
+
+  /* Performance hints para navegadores */
+  .hero-section,
+  .benefits-section,
+  .hs-horizontal {
+    contain: layout style;
+  }
+
+  /* Optimizar fuentes para móvil */
+  @media (max-width: 768px) {
+    .balhattan-font,
+    .subtitle-font,
+    .text-font {
+      text-rendering: optimizeSpeed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+
+  /* ========================================
+     APLICAR SIN CONTROLES A TODOS LOS VIDEOS
+     ======================================== */
+
+  /* Regla global para todos los videos en la aplicación - MÁXIMA EFECTIVIDAD */
+  video {
+    /* Eliminar TODOS los controles posibles - INMEDIATO */
+    -webkit-media-controls: none !important;
+    -moz-media-controls: none !important;
+    
+    /* IMPORTANTE: Bloquear controles desde el PRIMER FRAME */
+    -webkit-media-controls-panel: none !important;
+    -webkit-media-controls-overlay-enclosure: none !important;
+    
+    /* Bloquear interacciones COMPLETAMENTE */
+    pointer-events: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    
+    /* Optimizar para autoplay INMEDIATO */
+    -webkit-playsinline: true !important;
+    -moz-playsinline: true !important;
+    
+    /* Prevenir zoom y drag TOTALMENTE */
+    -webkit-user-drag: none !important;
+    -webkit-user-zoom: fixed !important;
+    -moz-user-zoom: fixed !important;
+    user-zoom: fixed !important;
+    
+    /* Bloquear menú contextual COMPLETAMENTE */
+    -webkit-context-menu: none !important;
+    context-menu: none !important;
+    
+    /* NUEVO: Forzar apariencia sin controles desde el inicio */
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    
+    /* NUEVO: Bloquear overlay touch en móvil */
+    -webkit-touch-action: none !important;
+    -ms-touch-action: none !important;
+    touch-action: none !important;
+    
+    /* NUEVO: Prevenir cualquier elemento de UI del navegador */
+    -webkit-user-callout: none !important;
+    -webkit-user-modify: read-only !important;
+    
+    /* NUEVO: Configuración específica anti-controles para WebKit */
+    -webkit-media-controls-enclosure: none !important;
+    -webkit-media-controls-start-playback-button: none !important;
+    -webkit-media-controls-play-button: none !important;
+  }
+
+  /* Ocultar TODOS los elementos de control de video - MÁXIMA COBERTURA */
+  video::-webkit-media-controls,
+  video::-webkit-media-controls-enclosure,
+  video::-webkit-media-controls-panel,
+  video::-webkit-media-controls-play-button,
+  video::-webkit-media-controls-start-playback-button,
+  video::-webkit-media-controls-fullscreen-button,
+  video::-webkit-media-controls-timeline,
+  video::-webkit-media-controls-current-time-display,
+  video::-webkit-media-controls-time-remaining-display,
+  video::-webkit-media-controls-mute-button,
+  video::-webkit-media-controls-volume-slider,
+  video::-webkit-media-controls-seek-back-button,
+  video::-webkit-media-controls-seek-forward-button,
+  video::-webkit-media-controls-rewind-button,
+  video::-webkit-media-controls-return-to-realtime-button,
+  video::-webkit-media-controls-toggle-closed-captions-button,
+  video::-webkit-media-controls-overlay-enclosure,
+  video::-webkit-media-controls-overlay-play-button,
+  video::-webkit-media-controls-wireless-playback-picker-button,
+  video::-webkit-media-controls-picture-in-picture-button,
+  video::-webkit-media-controls-overflow-button,
+  video::-webkit-media-controls-cast-button {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+  }
+
+  /* Para Firefox */
+  video::-moz-media-controls {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Estados de video - sin controles en cualquier estado */
+  video:focus,
+  video:hover,
+  video:active,
+  video:target {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Móvil específico - máximas restricciones ULTRA EFECTIVAS */
+  @media (max-width: 768px) {
+    video {
+      /* Bloquear completamente interacciones táctiles */
+      touch-action: none !important;
+      -ms-touch-action: none !important;
+      -webkit-touch-action: none !important;
+      
+      /* Forzar aspect ratio */
+      object-fit: cover !important;
+      
+      /* Prevenir cualquier overlay */
+      -webkit-media-controls-overlay-enclosure: none !important;
+      -webkit-media-controls-overlay-play-button: none !important;
+      
+      /* NUEVO: Configuración específica para prevenir controles en la primera carga */
+      -webkit-playsinline: true !important;
+      webkit-playsinline: true !important;
+      playsinline: true !important;
+      
+      /* NUEVO: Forzar invisibilidad de controles desde el primer momento */
+      -webkit-media-controls-start-playback-button: none !important;
+      
+      /* NUEVO: Bloquear cualquier gesto de touch que active controles */
+      -webkit-touch-callout: none !important;
+      -webkit-user-callout: none !important;
+      -webkit-user-drag: none !important;
+      
+      /* NUEVO: Anti-flash de controles */
+      animation: none !important;
+      transition: none !important;
+      
+      /* NUEVO: Configuración para Safari iOS específica */
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+    }
+  }
+  
+  /* NUEVO: Configuración específica para el primer frame en móvil */
+  @media (max-width: 768px) {
+    video[autoplay] {
+      /* Asegurar que autoplay sin controles sea inmediato */
+      -webkit-media-controls: none !important;
+      -webkit-appearance: none !important;
+      
+      /* Prevenir cualquier UI del sistema que pueda aparecer */
+      -webkit-system-appearance: none !important;
+      system-appearance: none !important;
+    }
+    
+    /* Para el momento exacto de carga del video */
+    video:not([data-video-loaded]) {
+      background: #000000 !important;
+      -webkit-media-controls: none !important;
+    }
+  }
+
+  /* REGLA ESPECÍFICA ULTRA AGRESIVA PARA SAFARI DESKTOP Y MÓVIL */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    /* Esta regla solo se aplica en navegadores WebKit (Safari, Chrome) */
+    video.hero-centered-video {
+      /* Eliminar todos los controles específicos de WebKit */
+      -webkit-media-controls: none !important;
+      -webkit-media-controls-panel: none !important;
+      -webkit-media-controls-enclosure: none !important;
+      -webkit-media-controls-overlay-enclosure: none !important;
+      -webkit-media-controls-start-playback-button: none !important;
+      -webkit-media-controls-play-button: none !important;
+      -webkit-media-controls-fullscreen-button: none !important;
+      -webkit-media-controls-timeline: none !important;
+      -webkit-media-controls-current-time-display: none !important;
+      -webkit-media-controls-time-remaining-display: none !important;
+      -webkit-media-controls-mute-button: none !important;
+      -webkit-media-controls-volume-slider: none !important;
+      
+      /* Forzar apariencia sin controles */
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      
+      /* Bloquear completamente interacciones */
+      pointer-events: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      -webkit-user-callout: none !important;
+      -webkit-user-drag: none !important;
+      -webkit-user-modify: read-only !important;
+      
+      /* Anti-controles específicos */
+      -webkit-playsinline: true !important;
+      webkit-playsinline: true !important;
+      playsinline: true !important;
+      
+      /* Prevenir cualquier overlay del sistema */
+      -webkit-transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      
+      /* Configuración específica para prevenir flash de controles */
+      transition: none !important;
+      animation: none !important;
+    }
+    
+    /* Específico para Safari en pantallas Retina */
+    @media (-webkit-min-device-pixel-ratio: 2) {
+      video.hero-centered-video {
+        -webkit-media-controls: none !important;
+        -webkit-appearance: none !important;
+        pointer-events: none !important;
+      }
+    }
+  }
+
+  /* ========================================
+     SAFARI-SPECIFIC ULTRA AGGRESSIVE RULES
+     ======================================== */
+
+  /* Detector específico para Safari - solo Safari interpreta esto */
+  @supports (-webkit-appearance: none) and (not (overflow: overlay)) {
+    /* TODOS los videos en Safari - sin excepción */
+    video {
+      /* FORZAR eliminación total de controles */
+      -webkit-media-controls: none !important;
+      -webkit-media-controls-panel: none !important;
+      -webkit-media-controls-enclosure: none !important;
+      -webkit-media-controls-overlay-enclosure: none !important;
+      -webkit-media-controls-start-playback-button: none !important;
+      -webkit-media-controls-play-button: none !important;
+      -webkit-media-controls-timeline: none !important;
+      -webkit-media-controls-current-time-display: none !important;
+      -webkit-media-controls-time-remaining-display: none !important;
+      -webkit-media-controls-mute-button: none !important;
+      -webkit-media-controls-volume-slider: none !important;
+      -webkit-media-controls-fullscreen-button: none !important;
+      -webkit-media-controls-wireless-playback-picker-button: none !important;
+      -webkit-media-controls-picture-in-picture-button: none !important;
+      -webkit-media-controls-seek-back-button: none !important;
+      -webkit-media-controls-seek-forward-button: none !important;
+      -webkit-media-controls-rewind-button: none !important;
+      -webkit-media-controls-return-to-realtime-button: none !important;
+      -webkit-media-controls-toggle-closed-captions-button: none !important;
+      -webkit-media-controls-overflow-button: none !important;
+      -webkit-media-controls-cast-button: none !important;
+      
+      /* ELIMINAR apariencia de video completamente */
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      
+      /* BLOQUEAR todas las interacciones posibles */
+      pointer-events: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-callout: none !important;
+      -webkit-user-select: none !important;
+      -webkit-user-drag: none !important;
+      -webkit-user-modify: read-only !important;
+      -webkit-touch-action: none !important;
+      touch-action: none !important;
+      
+      /* PREVENIR zoom y gestos de Safari */
+      -webkit-user-zoom: fixed !important;
+      -webkit-text-size-adjust: none !important;
+      
+      /* FORZAR playsinline para evitar controles de pantalla completa */
+      -webkit-playsinline: true !important;
+      webkit-playsinline: true !important;
+      playsinline: true !important;
+      
+      /* ELIMINAR cualquier outline/focus ring */
+      outline: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      
+      /* OPTIMIZAR rendimiento y prevenir overlays */
+      -webkit-transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+      -webkit-perspective: 1000px !important;
+      
+      /* ELIMINAR transiciones que puedan mostrar controles */
+      transition: none !important;
+      animation: none !important;
+      
+      /* CONFIGURACIÓN específica anti-controles */
+      -webkit-font-smoothing: antialiased !important;
+      -webkit-tap-highlight-color: transparent !important;
+      
+      /* BLOQUEAR menú contextual */
+      -webkit-context-menu: none !important;
+      context-menu: none !important;
+    }
+    
+    /* TODOS los pseudo-elementos de controles - eliminación total */
+    video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure,
+    video::-webkit-media-controls-panel,
+    video::-webkit-media-controls-play-button,
+    video::-webkit-media-controls-start-playback-button,
+    video::-webkit-media-controls-fullscreen-button,
+    video::-webkit-media-controls-timeline,
+    video::-webkit-media-controls-current-time-display,
+    video::-webkit-media-controls-time-remaining-display,
+    video::-webkit-media-controls-mute-button,
+    video::-webkit-media-controls-volume-slider,
+    video::-webkit-media-controls-seek-back-button,
+    video::-webkit-media-controls-seek-forward-button,
+    video::-webkit-media-controls-rewind-button,
+    video::-webkit-media-controls-return-to-realtime-button,
+    video::-webkit-media-controls-toggle-closed-captions-button,
+    video::-webkit-media-controls-overlay-enclosure,
+    video::-webkit-media-controls-overlay-play-button,
+    video::-webkit-media-controls-wireless-playback-picker-button,
+    video::-webkit-media-controls-picture-in-picture-button,
+    video::-webkit-media-controls-overflow-button,
+    video::-webkit-media-controls-cast-button {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      position: absolute !important;
+      left: -99999px !important;
+      top: -99999px !important;
+      z-index: -99999 !important;
+      pointer-events: none !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transform: scale(0) !important;
+      -webkit-transform: scale(0) !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      -webkit-clip-path: inset(100%) !important;
+      clip-path: inset(100%) !important;
+    }
+  }
+
+  /* REGLA ESPECÍFICA PARA SAFARI iOS - detección más precisa */
+  @supports (-webkit-touch-callout: none) and (-webkit-appearance: none) {
+    /* Safari iOS específico */
+    video {
+      /* CONFIGURACIÓN específica para Safari iOS */
+      -webkit-media-controls: none !important;
+      -webkit-appearance: none !important;
+      -webkit-playsinline: true !important;
+      webkit-playsinline: true !important;
+      playsinline: true !important;
+      
+      /* BLOQUEAR completamente touch en iOS */
+      -webkit-touch-callout: none !important;
+      -webkit-user-callout: none !important;
+      -webkit-touch-action: none !important;
+      touch-action: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      
+      /* PREVENIR gestos de iOS que activen controles */
+      -webkit-user-drag: none !important;
+      -webkit-user-zoom: fixed !important;
+      -webkit-text-size-adjust: none !important;
+      
+      /* ELIMINAR interacciones táctiles completamente */
+      pointer-events: none !important;
+      
+      /* OPTIMIZAR para iOS Safari */
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      -webkit-backface-visibility: hidden !important;
+      
+      /* CONFIGURACIÓN específica anti-controles iOS */
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-font-smoothing: antialiased !important;
+    }
+  }
+
+  /* REGLA ESPECÍFICA PARA SAFARI DESKTOP MACOS */
+  @supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
+    /* Safari macOS específico */
+    video {
+      /* ELIMINAR controles específicos de Safari macOS */
+      -webkit-media-controls: none !important;
+      -webkit-media-controls-panel: none !important;
+      -webkit-media-controls-enclosure: none !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      
+      /* BLOQUEAR interacciones de mouse/trackpad */
+      pointer-events: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      -webkit-user-drag: none !important;
+      
+      /* PREVENIR menú contextual macOS */
+      -webkit-context-menu: none !important;
+      context-menu: none !important;
+      -webkit-user-callout: none !important;
+      
+      /* OPTIMIZAR para macOS Safari */
+      -webkit-transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+    }
+  }
+
+  /* REGLA ULTRA ESPECÍFICA - cualquier cosa que pueda ser Safari */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-color-index: 0) {
+    /* Captura Safari y algunos Chrome antiguos */
+    video[autoplay],
+    video[muted],
+    video[loop],
+    video[playsinline] {
+      /* FORZAR eliminación inmediata de controles */
+      -webkit-media-controls: none !important;
+      -webkit-appearance: none !important;
+      pointer-events: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      -webkit-user-callout: none !important;
+      
+      /* ESPECÍFICO para videos con autoplay */
+      -webkit-playsinline: true !important;
+      playsinline: true !important;
+      
+      /* ELIMINAR cualquier overlay de carga */
+      -webkit-media-controls-start-playback-button: none !important;
+      -webkit-media-controls-overlay-enclosure: none !important;
+    }
+  }
+
+  /* REGLA DE EMERGENCIA - fuerza bruta total */
+  video[data-no-controls="true"],
+  video.hero-centered-video {
+    /* NUCLEAR OPTION - eliminar TODO */
+    -webkit-media-controls: none !important;
+    -moz-media-controls: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    pointer-events: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-callout: none !important;
+    -webkit-user-select: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-modify: read-only !important;
+    -webkit-touch-action: none !important;
+    touch-action: none !important;
+    -webkit-context-menu: none !important;
+    context-menu: none !important;
+    -webkit-playsinline: true !important;
+    webkit-playsinline: true !important;
+    playsinline: true !important;
+    
+    /* ELIMINAR completamente cualquier UI del navegador */
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-clip: border-box !important;
+    
+    /* OPTIMIZACIÓN anti-flash */
+    transition: none !important;
+    animation: none !important;
+    -webkit-transform: translateZ(0) !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+
+  /* NUEVA REGLA: Optimización específica para autoplay en Safari */
+  @supports (-webkit-appearance: none) {
+    video[autoplay] {
+      /* FORZAR autoplay inmediato en Safari */
+      -webkit-autoplay: true !important;
+      autoplay: true !important;
+      
+      /* MUTED es obligatorio para autoplay en Safari */
+      -webkit-muted: true !important;
+      muted: true !important;
+      
+      /* CONFIGURACIÓN específica para Safari autoplay */
+      -webkit-playsinline: true !important;
+      webkit-playsinline: true !important;
+      playsinline: true !important;
+      
+      /* PREVENIR que Safari pause el autoplay */
+      -webkit-media-controls: none !important;
+      -webkit-appearance: none !important;
+      
+      /* OPTIMIZACIÓN de carga para Safari */
+      preload: metadata !important;
+      
+      /* ANTI-CONTROLES específico para autoplay */
+      pointer-events: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      
+      /* PREVENIR interrupciones del autoplay */
+      -webkit-user-drag: none !important;
+      -webkit-user-modify: read-only !important;
+    }
+    
+    /* CONFIGURACIÓN específica para videos con loop + autoplay */
+    video[autoplay][loop] {
+      /* GARANTIZAR loop continuo en Safari */
+      -webkit-loop: true !important;
+      loop: true !important;
+      
+      /* EVITAR pausas en el loop de Safari */
+      -webkit-media-controls: none !important;
+      -webkit-appearance: none !important;
+      
+      /* OPTIMIZACIÓN para loop continuo */
+      -webkit-transform: translateZ(0) !important;
+      -webkit-backface-visibility: hidden !important;
+    }
+  }
+
+  /* REGLA ESPECÍFICA PARA iOS SAFARI AUTOPLAY */
+  @supports (-webkit-touch-callout: none) {
+    video[autoplay] {
+      /* CONFIGURACIÓN ultra específica para iOS Safari */
+      -webkit-playsinline: true !important;
+      webkit-playsinline: true !important;
+      playsinline: true !important;
+      
+      /* MUTED obligatorio en iOS */
+      -webkit-muted: true !important;
+      muted: true !important;
+      volume: 0 !important;
+      
+      /* PREVENIR interferencias táctiles con autoplay */
+      -webkit-touch-callout: none !important;
+      -webkit-user-callout: none !important;
+      -webkit-touch-action: none !important;
+      touch-action: none !important;
+      
+      /* ELIMINAR controles completamente en iOS */
+      -webkit-media-controls: none !important;
+      -webkit-appearance: none !important;
+      
+      /* OPTIMIZACIÓN específica para iOS Safari */
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      -webkit-backface-visibility: hidden !important;
+      
+      /* PREVENIR zoom accidental que interrumpa autoplay */
+      -webkit-user-zoom: fixed !important;
+      -webkit-text-size-adjust: none !important;
+    }
+  }
+
+  /* ÚLTIMO RECURSO - selector universal para videos problemáticos */
+  video:not([controls]) {
+    /* Para videos sin el atributo controls explícito */
+    -webkit-media-controls: none !important;
+    -webkit-appearance: none !important;
+    pointer-events: none !important;
+  }
+
+  video[controls="false"],
+  video[webkit-controls="false"],
+  video[data-controls="false"] {
+    /* Para videos con controls explícitamente deshabilitados */
+    -webkit-media-controls: none !important;
+    -webkit-appearance: none !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Clase para ocultar scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ * NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      /* NUNCA CORTAR TEXTO - SEPARACIÓN POR PALABRAS COMPLETAS */
+      word-wrap: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
