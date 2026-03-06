@@ -80,9 +80,14 @@ useEffect(() => {
    ↓
 4. Usuario presiona → "AÑADIR A MI MÓVIL"
    ↓
-5. Modal muestra → INSTRUCCIONES detalladas (3 pasos con iconos)
+5. Modal muestra → INSTRUCCIONES detalladas (5 pasos con iconos)
    ↓
-6. Usuario lee instrucciones → Cómo usar el botón compartir
+6. Usuario lee instrucciones:
+   - Paso 1: Tocar tres puntitos (...) en Safari
+   - Paso 2: Seleccionar botón Compartir
+   - Paso 3: Tocar Más (...) para ver opciones
+   - Paso 4: Seleccionar "Añadir a la pantalla de inicio"
+   - Paso 5: Confirmar con "Añadir"
    ↓
 7. Usuario presiona → "IR A LA APP"
    ↓
@@ -90,17 +95,15 @@ useEffect(() => {
    ↓
 9. En la app → Usuario hace los pasos que vio en el modal
    ↓
-10. "Compartir" → "Añadir a pantalla de inicio" → "Añadir"
+10. Sigue los 5 pasos → App instalada en pantalla de inicio ✅
    ↓
-11. App instalada → Ícono en pantalla de inicio ✅
+11. Usuario toca ícono → App se abre en modo standalone
    ↓
-12. Usuario toca ícono → App se abre en modo standalone
+12. App.tsx detecta → (window.navigator as any).standalone === true
    ↓
-13. App.tsx detecta → (window.navigator as any).standalone === true
+13. useEffect ejecuta → Redirección inmediata
    ↓
-14. useEffect ejecuta → Redirección inmediata
-   ↓
-15. Usuario llega a → https://app.wearehersafe.com/auth
+14. Usuario llega a → https://app.wearehersafe.com/auth
 ```
 
 **Código responsable:**
@@ -215,14 +218,16 @@ useEffect(() => {
 3. Modal aparece → "AÑADE HERSAFE A TU IPHONE"
 4. Presiona "AÑADIR A MI MÓVIL"
 5. **Verifica:** ¿Aparecen las INSTRUCCIONES en el modal? ✅
-   - Debe mostrar 3 pasos numerados
+   - Debe mostrar **5 pasos numerados**:
+     1. Tres puntitos (...) en Safari
+     2. Botón Compartir
+     3. Más (...) opciones
+     4. "Añadir a la pantalla de inicio"
+     5. Confirmar "Añadir"
    - Debe mostrar iconos de "Compartir" y "Download"
 6. Lee las instrucciones → Presiona "IR A LA APP"
 7. **Verifica:** ¿Redirige a `app.wearehersafe.com/auth`? ✅
-8. En la app, haz las instrucciones que viste:
-   - Safari → Botón "Compartir" (barra inferior)
-   - "Añadir a pantalla de inicio"
-   - "Añadir"
+8. En la app, haz las instrucciones que viste (los 5 pasos)
 9. Abre el ícono instalado desde tu pantalla de inicio
 10. **Verifica:** ¿Se abre directamente `app.wearehersafe.com/auth`? ✅
 

@@ -52,6 +52,14 @@ export function PWAProvider({ children }: { children: ReactNode }) {
       setPlatform('desktop');
     }
 
+    console.log('🔍 PWA: Platform detection', {
+      userAgent,
+      isIOS,
+      isAndroid,
+      isMobileDevice,
+      platform: isIOS ? 'ios' : isAndroid ? 'android' : 'desktop'
+    });
+
     // Capturar el evento beforeinstallprompt (solo en Android/Chrome)
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
@@ -110,16 +118,14 @@ export function PWAProvider({ children }: { children: ReactNode }) {
   const handleUnirmeClick = () => {
     console.log('🔍 PWA: handleUnirmeClick called', { isMobile, isInstalled, platform });
     
-    // Si está instalado o es desktop, ir directamente a la app
-    if (isInstalled || !isMobile) {
+    // Si es desktop, ir directamente a la app
+    if (!isMobile) {
       window.open('https://app.wearehersafe.com/auth', '_blank');
       return;
     }
     
-    // En iOS y Android móviles, mostrar el modal
-    if (platform === 'ios' || platform === 'android') {
-      setShowModal(true);
-    }
+    // En móvil (iOS y Android), mostrar modal informativo
+    setShowModal(true);
   };
 
   const closeModal = () => {

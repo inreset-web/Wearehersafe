@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Download, Share } from "lucide-react";
+import { X, Smartphone } from "lucide-react";
 import herSafeBlue from "figma:asset/22c729ee4b8ba6a5c1d8769ee53a00771fab679e.png";
 import { usePWAInstall } from "./PWAContext";
 
@@ -21,9 +21,8 @@ function getModalRoot() {
 }
 
 export function PWAInstallModal() {
-  const { showModal, closeModal, goToApp, promptInstall } = usePWAInstall();
+  const { showModal, closeModal } = usePWAInstall();
   const [platform, setPlatform] = useState<'ios' | 'android' | 'desktop'>('android');
-  const [showInstructions, setShowInstructions] = useState(false);
 
   useEffect(() => {
     // Detectar plataforma
@@ -40,26 +39,10 @@ export function PWAInstallModal() {
     }
   }, []);
 
-  const handleInstallClick = () => {
-    if (platform === 'ios') {
-      // En iOS: Mostrar instrucciones en el modal
-      setShowInstructions(true);
-    } else if (platform === 'android') {
-      // Disparar prompt nativo de Android
-      promptInstall();
-      // Cerrar el modal después de disparar el prompt
-      setTimeout(() => {
-        closeModal();
-      }, 300);
-    }
+  const handleGoToApp = () => {
+    closeModal();
+    window.location.href = 'https://app.wearehersafe.com/auth';
   };
-
-  // Resetear al cerrar
-  useEffect(() => {
-    if (!showModal) {
-      setShowInstructions(false);
-    }
-  }, [showModal]);
 
   // Prevenir scroll del body cuando el modal está abierto
   useEffect(() => {
@@ -68,11 +51,9 @@ export function PWAInstallModal() {
       const savedScrollY = window.scrollY;
       
       // Scroll al top para que el modal sea visible
-      // (position:fixed no funciona correctamente en el iframe de Figma)
       window.scrollTo({ top: 0, behavior: 'smooth' });
       
       // Bloquear scroll mediante event listeners (no CSS overflow)
-      // Pequeño delay para que el smooth scroll termine antes de bloquear
       const timeoutId = setTimeout(() => {
         const preventScroll = (e: Event) => {
           e.preventDefault();
@@ -147,7 +128,7 @@ export function PWAInstallModal() {
             }}
           />
 
-          {/* Modal centrado con flexbox - sin transform translate */}
+          {/* Modal centrado */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -187,286 +168,138 @@ export function PWAInstallModal() {
               <X size={24} strokeWidth={2.5} />
             </button>
 
-            {!showInstructions ? (
-              // Vista inicial
-              <div style={{ padding: '40px 24px 32px', textAlign: 'center' }}>
-                {/* Logo/Icono HerSafe */}
-                <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}>
-                  <div 
-                    style={{
-                      padding: '16px 24px',
-                      borderRadius: '16px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      backdropFilter: 'blur(8px)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      border: '2px solid rgba(255, 255, 255, 0.25)'
-                    }}
-                  >
-                    <img 
-                      src={herSafeBlue} 
-                      alt="HerSafe" 
-                      style={{ 
-                        height: '42px', 
-                        width: 'auto',
-                        filter: 'brightness(0) invert(1)'
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Título */}
-                <h2 
-                  style={{ 
-                    color: 'white',
-                    fontSize: 'clamp(22px, 5.5vw, 26px)',
-                    marginBottom: '12px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    fontWeight: 700,
-                    lineHeight: '1.2'
-                  }}
-                >
-                  {platform === 'ios' 
-                    ? 'Añade HerSafe a tu iPhone' 
-                    : <>Lleva <span style={{ fontFamily: "'Balhattan', sans-serif" }}>HerSafe</span> contigo</>
-                  }
-                </h2>
-
-                {/* Descripción */}
-                <p 
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    fontSize: 'clamp(15px, 4vw, 17px)',
-                    marginBottom: '32px',
-                    lineHeight: '1.5',
-                    fontFamily: "'Darker Grotesque', sans-serif"
-                  }}
-                >
-                  {platform === 'ios'
-                    ? 'Te redirigiremos a la app donde podrás ver las instrucciones para añadir HerSafe a tu pantalla de inicio'
-                    : 'Accede a tu comunidad con un solo toque desde tu pantalla de inicio'
-                  }
-                </p>
-
-                {/* Botones */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {/* Botón principal: Añadir a mi móvil */}
-                  <button
-                    onClick={handleInstallClick}
-                    style={{
-                      width: '100%',
-                      padding: '16px 24px',
-                      backgroundColor: 'white',
-                      color: '#0365ff',
-                      borderRadius: '12px',
-                      fontWeight: 700,
-                      fontSize: 'clamp(15px, 4vw, 16px)',
-                      border: 'none',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      letterSpacing: '0.5px',
-                      transition: 'all 0.2s',
-                      textTransform: 'uppercase',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.02)';
-                      e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1)';
-                      e.currentTarget.style.boxShadow = 'none';
-                    }}
-                  >
-                    <Download size={20} strokeWidth={2.5} />
-                    Añadir a mi móvil
-                  </button>
-
-                  {/* Botón secundario: Ahora no */}
-                  <button
-                    onClick={goToApp}
-                    style={{
-                      width: '100%',
-                      padding: '16px 24px',
-                      backgroundColor: 'transparent',
-                      color: 'white',
-                      border: '2px solid rgba(255, 255, 255, 0.3)',
-                      borderRadius: '12px',
-                      fontWeight: 700,
-                      fontSize: 'clamp(15px, 4vw, 16px)',
-                      cursor: 'pointer',
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      letterSpacing: '0.5px',
-                      transition: 'all 0.2s',
-                      textTransform: 'uppercase',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                    }}
-                  >
-                    Ahora no
-                  </button>
-                </div>
-              </div>
-            ) : (
-              // Vista de instrucciones iOS
-              <div style={{ padding: '40px 24px 32px', textAlign: 'center' }}>
-                {/* Título */}
-                <h2 
-                  style={{ 
-                    color: 'white',
-                    fontSize: 'clamp(22px, 5.5vw, 26px)',
-                    marginBottom: '24px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    fontWeight: 700
-                  }}
-                >
-                  Cómo instalar en iPhone
-                </h2>
-
-                {/* Instrucciones */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '28px', textAlign: 'left' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                    <div style={{
-                      flexShrink: 0,
-                      width: '28px',
-                      height: '28px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: '14px',
-                      fontFamily: "'Barlow Condensed', sans-serif"
-                    }}>
-                      1
-                    </div>
-                    <div style={{ color: 'rgba(255, 255, 255, 0.95)', fontFamily: "'Darker Grotesque', sans-serif", fontSize: 'clamp(16px, 4vw, 18px)', flex: 1 }}>
-                      <p style={{ margin: 0, lineHeight: '1.5' }}>
-                        Toca el botón <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', backgroundColor: 'rgba(255, 255, 255, 0.25)', borderRadius: '6px', margin: '0 4px', verticalAlign: 'middle' }}><Share size={14} /></span> en la barra inferior
-                      </p>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                    <div style={{
-                      flexShrink: 0,
-                      width: '28px',
-                      height: '28px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: '14px',
-                      fontFamily: "'Barlow Condensed', sans-serif"
-                    }}>
-                      2
-                    </div>
-                    <div style={{ color: 'rgba(255, 255, 255, 0.95)', fontFamily: "'Darker Grotesque', sans-serif", fontSize: 'clamp(16px, 4vw, 18px)', flex: 1 }}>
-                      <p style={{ margin: 0, lineHeight: '1.5' }}>
-                        Desplázate y selecciona <strong style={{ color: 'white' }}>"Añadir a la pantalla de inicio"</strong>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                    <div style={{
-                      flexShrink: 0,
-                      width: '28px',
-                      height: '28px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: '14px',
-                      fontFamily: "'Barlow Condensed', sans-serif"
-                    }}>
-                      3
-                    </div>
-                    <div style={{ color: 'rgba(255, 255, 255, 0.95)', fontFamily: "'Darker Grotesque', sans-serif", fontSize: 'clamp(16px, 4vw, 18px)', flex: 1 }}>
-                      <p style={{ margin: 0, lineHeight: '1.5' }}>
-                        Confirma con <strong style={{ color: 'white' }}>"Añadir"</strong> y ¡listo!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Ilustración simple */}
-                <div style={{ 
-                  marginBottom: '28px', 
-                  padding: '24px', 
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-                  borderRadius: '12px', 
-                  backdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)'
-                }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-                    <Share size={28} style={{ color: 'white' }} strokeWidth={2} />
-                    <span style={{ color: 'white', fontSize: '20px' }}>→</span>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <Download size={28} style={{ color: 'white', marginBottom: '4px' }} strokeWidth={2} />
-                      <span style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '11px', fontFamily: "'Darker Grotesque', sans-serif" }}>
-                        Añadir a inicio
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Botón entendido */}
-                <button
-                  onClick={() => {
-                    closeModal();
-                    window.location.href = 'https://app.wearehersafe.com/auth';
-                  }}
+            {/* Contenido del modal */}
+            <div style={{ padding: '40px 24px 32px', textAlign: 'center' }}>
+              {/* Logo/Icono HerSafe */}
+              <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}>
+                <div 
                   style={{
-                    width: '100%',
                     padding: '16px 24px',
-                    backgroundColor: 'white',
-                    color: '#0365ff',
-                    borderRadius: '12px',
-                    fontWeight: 700,
-                    fontSize: 'clamp(15px, 4vw, 16px)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    letterSpacing: '0.5px',
-                    transition: 'all 0.2s',
-                    textTransform: 'uppercase',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.02)';
-                    e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.boxShadow = 'none';
+                    borderRadius: '16px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                    backdropFilter: 'blur(8px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '2px solid rgba(255, 255, 255, 0.25)'
                   }}
                 >
-                  IR A LA APP
-                </button>
+                  <img 
+                    src={herSafeBlue} 
+                    alt="HerSafe" 
+                    style={{ 
+                      height: '42px', 
+                      width: 'auto',
+                      filter: 'brightness(0) invert(1)'
+                    }}
+                  />
+                </div>
               </div>
-            )}
+
+              {/* Título */}
+              <h2 
+                style={{ 
+                  color: 'white',
+                  fontSize: 'clamp(22px, 5.5vw, 26px)',
+                  marginBottom: '12px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 700,
+                  lineHeight: '1.2'
+                }}
+              >
+                Instala <span style={{ fontFamily: "'Balhattan', sans-serif" }}>HerSafe</span> en tu móvil
+              </h2>
+
+              {/* Descripción */}
+              <p 
+                style={{ 
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  fontSize: 'clamp(15px, 4vw, 17px)',
+                  marginBottom: '24px',
+                  lineHeight: '1.5',
+                  fontFamily: "'Darker Grotesque', sans-serif"
+                }}
+              >
+                Para instalar HerSafe en tu {platform === 'ios' ? 'iPhone' : 'móvil'}, primero accede a nuestra app donde encontrarás las instrucciones paso a paso.
+              </p>
+
+              {/* Icono ilustrativo */}
+              <div style={{ 
+                marginBottom: '28px', 
+                padding: '24px', 
+                backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+                borderRadius: '12px', 
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                display: 'flex',
+                justifyContent: 'center'
+              }}>
+                <Smartphone size={48} style={{ color: 'white' }} strokeWidth={1.5} />
+              </div>
+
+              {/* Botón principal */}
+              <button
+                onClick={handleGoToApp}
+                style={{
+                  width: '100%',
+                  padding: '16px 24px',
+                  backgroundColor: 'white',
+                  color: '#0365ff',
+                  borderRadius: '12px',
+                  fontWeight: 700,
+                  fontSize: 'clamp(15px, 4vw, 16px)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  letterSpacing: '0.5px',
+                  transition: 'all 0.2s',
+                  textTransform: 'uppercase',
+                  marginBottom: '12px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                IR A LA APP
+              </button>
+
+              {/* Botón secundario */}
+              <button
+                onClick={closeModal}
+                style={{
+                  width: '100%',
+                  padding: '16px 24px',
+                  backgroundColor: 'transparent',
+                  color: 'white',
+                  border: '2px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '12px',
+                  fontWeight: 700,
+                  fontSize: 'clamp(15px, 4vw, 16px)',
+                  cursor: 'pointer',
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  letterSpacing: '0.5px',
+                  transition: 'all 0.2s',
+                  textTransform: 'uppercase',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                }}
+              >
+                Ahora no
+              </button>
+            </div>
           </motion.div>
         </div>
       )}
