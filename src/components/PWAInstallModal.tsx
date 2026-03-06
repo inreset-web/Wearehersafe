@@ -157,15 +157,12 @@ export function PWAInstallModal() {
               position: 'relative',
               width: 'calc(100% - 32px)',
               maxWidth: '420px',
-              maxHeight: '90vh',
               maxHeight: '90dvh',
               backgroundColor: '#0365ff',
               borderRadius: '20px',
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.6)',
               zIndex: 2,
               overflow: 'auto',
-              fontFamily: 'inherit',
-              margin: '16px',
             }}
           >
             {/* Botón cerrar X */}

@@ -38,14 +38,17 @@ export function Footer() {
             >
               <motion.h1 
                 className="text-2xl lg:text-3xl text-white text-center mb-2" 
-                style={{ fontFamily: 'Balhattan, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}
+                style={{ 
+                  fontFamily: 'Balhattan, sans-serif', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.05em',
+                  fontWeight: 700 
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: false }}
-                style={{ fontWeight: 700 }}
                 whileHover={{ color: "#024bb5" }}
-                transition={{ duration: 0.3 }}
               >
                 HERSAFE
               </motion.h1>

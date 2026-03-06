@@ -50,7 +50,22 @@ const LoadingSpinner = memo(() => (
 function AppContent() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { isTransitioning, transitionTo } = usePageTransition();
+  const { isNavigating, navigateWithTransition } = usePageTransition();
+  const { showModal, closeModal, handleInstall } = usePWAInstall();
+
+  // 🚀 REDIRECCIÓN AUTOMÁTICA: Si la PWA fue abierta desde el home screen → ir a la app
+  useEffect(() => {
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (window.navigator as any).standalone === true; // iOS
+
+    if (isStandalone) {
+      console.log(
+        "📱 PWA detectada en modo standalone → Redirigiendo a app...",
+      );
+      window.location.href = "https://app.wearehersafe.com/auth";
+    }
+  }, []);
 
   // Optimización móvil: Precargar componentes en background
   useEffect(() => {
@@ -83,7 +98,7 @@ function AppContent() {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       // Reducir tiempo de transición para móvil
-      transitionTo(() => {
+      navigateWithTransition(() => {
         navigate(targetPath);
         // Asegurar que después de la transición también esté en el top
         setTimeout(() => {
@@ -129,7 +144,7 @@ function AppContent() {
       )}
 
       {/* Overlay de transición más sutil */}
-      <PageLoadingOverlay isLoading={isTransitioning} />
+      <PageLoadingOverlay isLoading={isNavigating} />
 
       <main className="relative flex-1 mobile-main">
         <Routes>

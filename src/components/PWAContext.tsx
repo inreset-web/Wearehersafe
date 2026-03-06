@@ -67,6 +67,11 @@ export function PWAProvider({ children }: { children: ReactNode }) {
       setIsInstalled(true);
       setDeferredPrompt(null);
       setShowModal(false);
+      
+      // Redirigir automáticamente a la app después de instalar
+      setTimeout(() => {
+        window.location.href = 'https://app.wearehersafe.com/auth';
+      }, 1000);
     };
 
     window.addEventListener('appinstalled', handleAppInstalled);
@@ -103,14 +108,23 @@ export function PWAProvider({ children }: { children: ReactNode }) {
   };
 
   const handleUnirmeClick = () => {
-    console.log('🔍 PWA: handleUnirmeClick called', { isMobile, isInstalled });
+    console.log('🔍 PWA: handleUnirmeClick called', { isMobile, isInstalled, platform });
     
-    // Si estamos en móvil y no está instalado, mostrar el modal
-    if (isMobile && !isInstalled) {
-      setShowModal(true);
-    } else {
-      // Si está en desktop o ya instalado, ir directamente a la app
+    // Si está instalado o es desktop, ir directamente a la app
+    if (isInstalled || !isMobile) {
       window.open('https://app.wearehersafe.com/auth', '_blank');
+      return;
+    }
+    
+    // En iOS, ir directamente a la app (Safari puede mostrar su propio banner)
+    if (platform === 'ios') {
+      window.open('https://app.wearehersafe.com/auth', '_blank');
+      return;
+    }
+    
+    // Solo en Android mostrar el modal
+    if (platform === 'android') {
+      setShowModal(true);
     }
   };
 
