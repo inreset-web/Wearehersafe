@@ -42,7 +42,7 @@ export function PWAInstallModal() {
 
   const handleInstallClick = () => {
     if (platform === 'ios') {
-      // Mostrar instrucciones para iOS
+      // En iOS: Mostrar instrucciones en el modal
       setShowInstructions(true);
     } else if (platform === 'android') {
       // Disparar prompt nativo de Android
@@ -229,7 +229,10 @@ export function PWAInstallModal() {
                     lineHeight: '1.2'
                   }}
                 >
-                  Lleva <span style={{ fontFamily: "'Balhattan', sans-serif" }}>HerSafe</span> contigo
+                  {platform === 'ios' 
+                    ? 'Añade HerSafe a tu iPhone' 
+                    : <>Lleva <span style={{ fontFamily: "'Balhattan', sans-serif" }}>HerSafe</span> contigo</>
+                  }
                 </h2>
 
                 {/* Descripción */}
@@ -242,7 +245,10 @@ export function PWAInstallModal() {
                     fontFamily: "'Darker Grotesque', sans-serif"
                   }}
                 >
-                  Accede a tu comunidad con un solo toque desde tu pantalla de inicio
+                  {platform === 'ios'
+                    ? 'Te redirigiremos a la app donde podrás ver las instrucciones para añadir HerSafe a tu pantalla de inicio'
+                    : 'Accede a tu comunidad con un solo toque desde tu pantalla de inicio'
+                  }
                 </p>
 
                 {/* Botones */}
@@ -429,7 +435,10 @@ export function PWAInstallModal() {
 
                 {/* Botón entendido */}
                 <button
-                  onClick={closeModal}
+                  onClick={() => {
+                    closeModal();
+                    window.location.href = 'https://app.wearehersafe.com/auth';
+                  }}
                   style={{
                     width: '100%',
                     padding: '16px 24px',
@@ -454,7 +463,7 @@ export function PWAInstallModal() {
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
-                  Entendido
+                  IR A LA APP
                 </button>
               </div>
             )}

@@ -73,13 +73,47 @@ maxHeight: '90dvh'  // Eliminado duplicado
 
 ### 3. **Redirección automática a la app móvil** ✨
 
-**Flujo completo:**
+**Flujo completo en Android:**
 1. Usuario en `wearehersafe.com` (landing) → Presiona "UNIRME"
 2. Modal aparece → Instala la PWA
 3. **Inmediatamente después de instalar** → Redirige a `app.wearehersafe.com/auth`
 4. **Cuando abra el ícono instalado** → Detecta modo standalone → Redirige a la app
 
+**Flujo completo en iOS:**
+1. Usuario en `wearehersafe.com` (landing) → Presiona "UNIRME"
+2. **Modal aparece** → "Añade HerSafe a tu iPhone"
+3. Usuario presiona "AÑADIR A MI MÓVIL" → **Modal muestra INSTRUCCIONES detalladas**
+4. Usuario lee instrucciones (3 pasos con iconos) → Presiona "IR A LA APP"
+5. **Redirige a `app.wearehersafe.com/auth`** → Usuario hace las instrucciones que vio
+6. Usuario añade a pantalla de inicio manualmente
+7. **Cuando abra el ícono instalado** → Detecta modo standalone → Redirige a la app
+
+**Flujo completo en Desktop:**
+1. Usuario en `wearehersafe.com` (landing) → Presiona "UNIRME"
+2. **NO muestra modal** → Redirige directo a `app.wearehersafe.com/auth`
+
 ```typescript
+// /components/PWAContext.tsx - Lógica por plataforma
+if (isInstalled || !isMobile) {
+  window.open('https://app.wearehersafe.com/auth', '_blank'); // Desktop
+  return;
+}
+
+if (platform === 'ios' || platform === 'android') {
+  setShowModal(true); // Móviles muestran modal
+}
+
+// /components/PWAInstallModal.tsx - iOS muestra instrucciones
+if (platform === 'ios') {
+  setShowInstructions(true); // Vista con 3 pasos detallados
+}
+
+// Botón "IR A LA APP" en instrucciones iOS
+onClick={() => {
+  closeModal();
+  window.location.href = 'https://app.wearehersafe.com/auth';
+}}
+
 // /App.tsx - Detecta si fue abierta desde el home screen
 useEffect(() => {
   const isStandalone = 
@@ -91,7 +125,7 @@ useEffect(() => {
   }
 }, []);
 
-// /components/PWAContext.tsx - Redirige después de instalar
+// /components/PWAContext.tsx - Redirige después de instalar (solo Android)
 window.addEventListener('appinstalled', () => {
   setTimeout(() => {
     window.location.href = 'https://app.wearehersafe.com/auth';
@@ -113,7 +147,7 @@ git status
 git add .
 
 # 3. Commit con mensaje descriptivo
-git commit -m "Fix: Corregir PWA Android + Limpiar proyecto"
+git commit -m "Fix: PWA Android + iOS + Redirección automática a app móvil"
 
 # 4. Subir a GitHub
 git push origin main

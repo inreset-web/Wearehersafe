@@ -116,14 +116,8 @@ export function PWAProvider({ children }: { children: ReactNode }) {
       return;
     }
     
-    // En iOS, ir directamente a la app (Safari puede mostrar su propio banner)
-    if (platform === 'ios') {
-      window.open('https://app.wearehersafe.com/auth', '_blank');
-      return;
-    }
-    
-    // Solo en Android mostrar el modal
-    if (platform === 'android') {
+    // En iOS y Android móviles, mostrar el modal
+    if (platform === 'ios' || platform === 'android') {
       setShowModal(true);
     }
   };
